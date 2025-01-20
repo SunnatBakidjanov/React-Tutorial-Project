@@ -16,7 +16,9 @@ reactRoot.render(
 
 					<ul className="restaurants__dish-list">
 						{restaurant.menu.map(dish => (
-							<li key={dish.id}>{dish.name}</li>
+							<li className="restaurants__dish" key={dish.id}>
+								{dish.name}
+							</li>
 						))}
 					</ul>
 				</div>
@@ -25,11 +27,11 @@ reactRoot.render(
 					<h3 className="restaurants__reviews-title">Отзывы</h3>
 
 					<ul className="restaurants__reviews-list">
-						{restaurant.reviews.map(reviews => (
-							<li className="restaurants__review" key={reviews.id}>
-								<p className="restaurants__user-name">{`Name: ${reviews.user}`}</p>
-								<p className="restaurants__reviews-text">{`Review: ${reviews.text}`}</p>
-								<p className="restaurants__reviews-rating">{`Rating: ${reviews.rating}`}</p>
+						{restaurant.reviews.map(review => (
+							<li className="restaurants__review" key={review.id}>
+								<p className="restaurants__user-name">{`Name: ${review.user}`}</p>
+								<p className="restaurants__reviews-text">{`Review: ${review.text}`}</p>
+								<p className="restaurants__reviews-rating">{`Rating: ${review.rating}`}</p>
 							</li>
 						))}
 					</ul>
