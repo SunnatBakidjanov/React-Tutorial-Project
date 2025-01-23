@@ -4,20 +4,19 @@ export const Menu = ({ menu }) => {
     return (
         <ul className='menu'>
             {menu.map(dish => {
-                if (!dish.name && dish.name.trim() === "") {
+                if (!dish.name || dish.name.trim() === "") {
                     console.error(`Ошибка: У блюда с id ${dish.id} отсутствует имя.`);
                     return null;
                 }
 
-                if (!dish.price) {
+                if (!dish.price || dish.name.trim() === "") {
                     console.error(`Ошибка: У блюда с id ${dish.id} отсутствует цена.`);
                     return null;
                 }
 
                 if (!dish.ingredients || !dish.ingredients.length) {
                     console.error(`Ошибка: У блюда с id ${dish.id} отсутсвуют ингридиенты`);
-                    // так можно делать?я не мутировал пропсы!вроде как)
-                    dish.ingredients = "ингредиенты пока не добавлены но они скоро появятся";
+                    dish = { ...dish, ingredients: "Ингредиенты пока не добавлены, но они скоро появятся" };
                 }
 
                 return (
