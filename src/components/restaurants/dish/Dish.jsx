@@ -8,6 +8,7 @@ export const Dish = ({ dish, price, ingredients }) => {
             <p className='dish'>Dish: {dish}</p>
             <p className='price'>Price: {price}</p>
             <p className='ingredients'>Ingredients: {ingredients}</p>
+
             <button style={{ width: "20px", height: "20px" }} onClick={onDecrement}>
                 -
             </button>
