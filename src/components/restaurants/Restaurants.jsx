@@ -1,5 +1,6 @@
 import { restaurants } from "../../../mock/mock";
 import { Menu } from "./menu/Menu";
+import { Reviews } from "./reviews/Reviews";
 
 export const Restaurants = () => {
     return (
@@ -21,15 +22,7 @@ export const Restaurants = () => {
                         <div className='restaurants__reviews-box'>
                             <h3 className='restaurants__reviews-title'>Отзывы</h3>
 
-                            <ul className='restaurants__reviews-list'>
-                                {restaurant.reviews.map(review => (
-                                    <li className='restaurants__review' key={review.id}>
-                                        <p className='restaurants__user-name'>{`Name: ${review.user}`}</p>
-                                        <p className='restaurants__reviews-text'>{`Review: ${review.text}`}</p>
-                                        <p className='restaurants__reviews-rating'>{`Rating: ${review.rating}`}</p>
-                                    </li>
-                                ))}
-                            </ul>
+                            <Reviews reviews={restaurant.reviews} />
                         </div>
                     </li>
                 ))}

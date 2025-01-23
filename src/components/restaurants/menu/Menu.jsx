@@ -9,7 +9,7 @@ export const Menu = ({ menu }) => {
                     return null;
                 }
 
-                if (!dish.price || dish.name.trim() === "") {
+                if (dish.price === undefined || dish.price === null) {
                     console.error(`Ошибка: У блюда с id ${dish.id} отсутствует цена.`);
                     return null;
                 }
