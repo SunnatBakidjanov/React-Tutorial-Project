@@ -1,6 +1,5 @@
 import { Dish } from "../dish/Dish";
 import { validateDish } from "./validateDish";
-validateDish;
 
 export const Menu = ({ menu }) => {
     return (
