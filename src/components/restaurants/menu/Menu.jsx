@@ -20,7 +20,7 @@ export const Menu = ({ menu }) => {
                 }
 
                 return (
-                    <li className='menu__item' key={dish.id}>
+                    <li className='menu-item' key={dish.id}>
                         <Dish dish={dish.name} price={dish.price} ingredients={dish.ingredients} />
                     </li>
                 );

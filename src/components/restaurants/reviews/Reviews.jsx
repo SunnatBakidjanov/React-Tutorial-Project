@@ -4,8 +4,8 @@ export const Reviews = ({ reviews }) => {
     return (
         <ul className='reviews'>
             {reviews.map(review => {
-                if (!review.user || review.user.trim() === "") {
-                    console.error(`Ошибка: У пользователя с id ${review.id} отсутствует имя.`);
+                if (review.user === undefined || review.user.trim() === "") {
+                    if (review.user === undefined) console.error(`Ошибка: У пользователя с id ${review.id} отсутствует свойство user.`);
                     review = { ...review, user: "Anonim" };
                 }
 
@@ -22,7 +22,7 @@ export const Reviews = ({ reviews }) => {
                 }
 
                 return (
-                    <li className='restaurants__review' key={review.id}>
+                    <li className='restaurants-review' key={review.id}>
                         <ReviewItem user={review.user} text={review.text} rating={review.rating} />
                     </li>
                 );
