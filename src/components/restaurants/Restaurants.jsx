@@ -1,9 +1,12 @@
 import { restaurants } from "../../../mock/mock";
+import { Menu } from "./menu/Menu";
 
 export const Restaurants = () => {
     return (
         <div className='restaurants'>
-            <h1 className='restaurants__title'>Рестораны</h1>
+            <h1 className='main-title' style={{ display: "flex", justifyContent: "center", alignItems: "center", border: "2px solid gray", height: "50px" }}>
+                Рестораны
+            </h1>
             <ul className='restaurants__list'>
                 {restaurants.map(restaurant => (
                     <li className='restaurants__item' key={restaurant.id}>
@@ -12,13 +15,7 @@ export const Restaurants = () => {
                         <div className='restaurants__menu-box'>
                             <h3 className='restaurants__menu-title'>Меню</h3>
 
-                            <ul className='restaurants__dish-list'>
-                                {restaurant.menu.map(dish => (
-                                    <li className='restaurants__dish' key={dish.id}>
-                                        {dish.name}
-                                    </li>
-                                ))}
-                            </ul>
+                            <Menu menu={restaurant.menu} />
                         </div>
 
                         <div className='restaurants__reviews-box'>
