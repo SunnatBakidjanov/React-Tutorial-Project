@@ -1,16 +1,14 @@
 import { useState } from "react";
 
 export const useTabs = restaurants => {
-    const [activeTab, setActiveTab] = useState(restaurants[0]?.id);
+    const [activeTabId, setActiveTabId] = useState(restaurants[0]?.id);
 
-    const handleTabClick = tabId => {
-        if (tabId !== activeTab) {
-            setActiveTab(tabId);
-        }
+    const handleSetIdOnClick = tabId => {
+        if (tabId !== activeTabId) setActiveTabId(tabId);
     };
 
     return {
-        activeTab,
-        handleTabClick,
+        activeTabId,
+        handleSetIdOnClick,
     };
 };

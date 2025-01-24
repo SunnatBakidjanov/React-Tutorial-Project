@@ -5,33 +5,23 @@ import { RestaurantTabs } from "./restaurantTabs/RestaurantTabs";
 import { validateRestaurant } from "./validateRestaurant";
 
 export const Restaurants = () => {
-    const { activeTab, handleTabClick } = useTabs(restaurants);
+    const { activeTabId, handleSetIdOnClick } = useTabs(restaurants);
 
-    const filteredRestaurants = restaurants.filter(restaurant => restaurant.id === activeTab);
+    const findRestaurant = restaurants.find(restaurant => restaurant.id === activeTabId);
 
     return (
         <div className='restaurants'>
-            <h1 className='main-title' style={{ display: "flex", justifyContent: "center", alignItems: "center", border: "2px solid gray", height: "50px" }}>
-                Рестораны
-            </h1>
+            <h1 className='main-title'>Рестораны</h1>
 
-            <RestaurantTabs restaurants={restaurants} handleTabClick={handleTabClick} />
+            <RestaurantTabs restaurants={restaurants} handleSetIdOnClick={handleSetIdOnClick} />
 
             <ul className='restaurants-list'>
-                {filteredRestaurants.length > 0 ? (
-                    filteredRestaurants.map(restaurant => {
-                        const validatedRestaurant = validateRestaurant(restaurant);
-
-                        return (
-                            <li className='restaurants-item' key={validatedRestaurant.id}>
-                                <RestaurantItem name={validatedRestaurant.name} menu={validatedRestaurant.menu} reviews={validatedRestaurant.reviews} />
-                            </li>
-                        );
-                    })
-                ) : (
-                    <li className='restaurants-item'>
-                        <p>Тут должен быть какой-то ресторан, но его нет. Попробуйте выбрать другой.</p>
+                {findRestaurant ? (
+                    <li key={findRestaurant.id}>
+                        <RestaurantItem {...validateRestaurant(findRestaurant)} />
                     </li>
+                ) : (
+                    <p>Нет подходящего ресторана для отображения</p>
                 )}
             </ul>
         </div>
