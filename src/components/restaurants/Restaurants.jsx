@@ -1,4 +1,4 @@
-import { useTabs } from "./useTabs";
+import { useTabs } from "./hooks/useTabs";
 import { restaurants } from "../../../mock/mock";
 import { RestaurantItem } from "./restaurantItem/RestaurantItem";
 import { RestaurantTabs } from "./restaurantTabs/RestaurantTabs";
