@@ -3,6 +3,7 @@ import { restaurants } from "../../../mock/mock";
 import { RestaurantItem } from "./restaurantItem/RestaurantItem";
 import { RestaurantTabs } from "./restaurantTabs/RestaurantTabs";
 import { validateRestaurant } from "./validateRestaurant";
+import { ReviewForm } from "./review-form/ReviewForm";
 
 export const Restaurants = () => {
     const { activeTabId, handleSetIdOnClick } = useTabs(restaurants);
@@ -19,6 +20,8 @@ export const Restaurants = () => {
                 {findRestaurant ? (
                     <li key={findRestaurant.id}>
                         <RestaurantItem {...validateRestaurant(findRestaurant)} />
+
+                        <ReviewForm />
                     </li>
                 ) : (
                     <p>Нет подходящего ресторана для отображения</p>
