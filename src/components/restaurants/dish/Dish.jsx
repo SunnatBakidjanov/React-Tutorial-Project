@@ -2,7 +2,7 @@ import { DishCounter } from "../dishCounter/DishCounter";
 import { useCount } from "../hooks/useCount";
 
 export const Dish = ({ dish, price, ingredients }) => {
-    const countState = useCount();
+    const countState = useCount(0, 5);
 
     return (
         <>
