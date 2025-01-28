@@ -10,22 +10,21 @@ export const Restaurants = () => {
 
     const findRestaurant = restaurants.find(restaurant => restaurant.id === activeTabId);
 
+    const validatedRestaurant = validateRestaurant(findRestaurant);
+
     return (
         <div className='restaurants'>
             <h1 className='main-title'>Рестораны</h1>
 
-            <RestaurantTabs restaurants={restaurants} handleSetIdOnClick={handleSetIdOnClick} />
+            <RestaurantTabs restaurants={validatedRestaurant} handleSetIdOnClick={handleSetIdOnClick} />
 
             <ul className='restaurants-list'>
-                {findRestaurant ? (
-                    <li key={findRestaurant.id}>
-                        <RestaurantItem {...validateRestaurant(findRestaurant)} />
+                <li key={findRestaurant.id}>
+                    {/* так можно делать? */}
+                    <RestaurantItem {...validatedRestaurant} />
 
-                        <ReviewForm />
-                    </li>
-                ) : (
-                    <p>Нет подходящего ресторана для отображения</p>
-                )}
+                    <ReviewForm />
+                </li>
             </ul>
         </div>
     );
