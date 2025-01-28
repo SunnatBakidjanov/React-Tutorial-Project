@@ -1,36 +1,20 @@
 export const validateRestaurant = restaurant => {
-    const errors = [];
+    const updatedRestaurant = { ...restaurant };
 
-    const name =
-        restaurant?.name?.trim() ||
-        (() => {
-            errors.push("Ошибка: name отсутствует или пуст");
-            return "Ресторан";
-        })();
-
-    const menu =
-        Array.isArray(restaurant?.menu) && restaurant.menu.length > 0
-            ? restaurant.menu
-            : (() => {
-                  errors.push("Ошибка: menu отсутствует или пуст");
-                  return ["Меню недоступно"];
-              })();
-
-    const reviews =
-        Array.isArray(restaurant?.reviews) && restaurant.reviews.length > 0
-            ? restaurant.reviews
-            : (() => {
-                  errors.push("Ошибка: reviews отсутствуют или пусты");
-                  return ["Отзывы недоступны"];
-              })();
-
-    if (errors.length > 0) {
-        console.error("Ошибки в данных ресторана:", errors);
+    if (updatedRestaurant?.name?.trim() === "" || updatedRestaurant.name === undefined) {
+        console.error(`Ошибка: name в restaurants ${updatedRestaurant.id} отсутствует или пуст`);
+        updatedRestaurant.name = "Ресторан";
     }
 
-    return {
-        name,
-        menu,
-        reviews,
-    };
+    if (!Array.isArray(restaurant?.menu) || restaurant.menu.length === 0) {
+        console.error(`Ошибка: menu в restaurants ${updatedRestaurant?.name} отсутствует или пуст`);
+        updatedRestaurant.menu = [""];
+    }
+
+    if (!Array.isArray(restaurant?.reviews) || restaurant.reviews.length === 0) {
+        console.error(`Ошибка: reviews в restaurants ${updatedRestaurant?.name} отсутствует или пуст`);
+        updatedRestaurant.reviews = [""];
+    }
+
+    return updatedRestaurant;
 };

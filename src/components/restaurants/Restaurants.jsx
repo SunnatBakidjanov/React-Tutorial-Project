@@ -16,16 +16,19 @@ export const Restaurants = () => {
         <div className='restaurants'>
             <h1 className='main-title'>Рестораны</h1>
 
-            <RestaurantTabs restaurants={validatedRestaurant} handleSetIdOnClick={handleSetIdOnClick} />
+            <RestaurantTabs restaurants={restaurants} handleSetIdOnClick={handleSetIdOnClick} />
 
-            <ul className='restaurants-list'>
-                <li key={findRestaurant.id}>
-                    {/* так можно делать? */}
-                    <RestaurantItem {...validatedRestaurant} />
+            {validatedRestaurant ? (
+                <ul className='restaurants-list'>
+                    <li key={restaurants.id}>
+                        <RestaurantItem {...validatedRestaurant} />
 
-                    <ReviewForm />
-                </li>
-            </ul>
+                        <ReviewForm />
+                    </li>
+                </ul>
+            ) : (
+                <p>Что-то пошло не так</p>
+            )}
         </div>
     );
 };

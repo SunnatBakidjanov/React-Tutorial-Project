@@ -1,60 +1,33 @@
-import { useReducer } from "react";
-
-const INTITAL_VALUE = {
-    name: "",
-    text: "",
-    message: "",
-};
-
-const reducer = (state, { type, payload }) => {
-    switch (type) {
-        case "SET_NAME":
-            return {
-                ...INTITAL_VALUE,
-                name: payload,
-            };
-        case "SET_ADDRESS":
-            return {
-                ...state,
-                address: payload,
-            };
-        case "SET_MESSAGE":
-            return {
-                ...state,
-                message: payload,
-            };
-
-        default:
-            return state;
-    }
-};
+import { Counter } from "../counter/Counter";
+import { useForm } from "./useForm";
 
 export const ReviewForm = () => {
-    const [form, dispatch] = useReducer(reducer, INTITAL_VALUE);
+    const { form, setAddress, setMessage, setIncrement, setDecrement, clearForm } = useForm();
 
-    const setName = value => dispatch({ type: "SET_NAME", payload: value });
-    const setAdress = value => dispatch({ type: "SET_ADRESS", payload: value });
-    const setMessage = value => dispatch({ type: "SET_MESSAGE", payload: value });
-
-    const { name, message, address } = form;
+    const { address, message, rating } = form;
 
     return (
         <>
+            <h3>Форма</h3>
+
             <form className='form' action='#'>
                 <div className='form-group'>
-                    <input type='text' value={name} name='name' id='name' onChange={event => setName(event.target.value)} />
-                    <label htmlFor='name'>Введите ваше имя</label>
-                </div>
-
-                <div className='form-group'>
-                    <input type='text' value={address} name='adress' id='adress' onChange={event => setAdress(event.target.value)} />
                     <label htmlFor='adress'>Введите ваш адресс</label>
+                    <input type='text' value={address} name='adress' id='adress' onChange={event => setAddress(event.target.value)} />
+                    <p>Адресс: {form.address}</p>
                 </div>
 
                 <div className='form-group'>
-                    <input type='text' value={message} name='message' id='message' onChange={event => setMessage(event.target.value)} />
                     <label htmlFor='message'>Введите сообщение</label>
+                    <textarea name='message' id='message' value={message} onChange={event => setMessage(event.target.value)}></textarea>
+                    <p>Сообщение: {form.message}</p>
                 </div>
+
+                <Counter count={rating} onIncrement={setIncrement} onDecrement={setDecrement} />
+
+                <button type='button' onClick={clearForm} style={{ display: "block" }}>
+                    clear
+                </button>
             </form>
         </>
     );
