@@ -1,0 +1,14 @@
+.container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 20px;
+    background-color: white;
+}
+
+.progress {
+    background-color: red;
+    width: var(--progress-bar-width);
+    height: inherit;
+    will-change: width;
+}

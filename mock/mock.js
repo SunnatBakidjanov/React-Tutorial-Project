@@ -21,6 +21,18 @@ export const restaurants = [
                 price: 8,
                 ingredients: ["chicken", "bread"],
             },
+            {
+                id: "1a2b3c4d-1234-5678-9abc-def012345678",
+                name: "Butter Chicken",
+                price: 14,
+                ingredients: ["chicken", "butter", "tomato"],
+            },
+            {
+                id: "2b3c4d5e-2345-6789-abcd-ef0123456789",
+                name: "Paneer Tikka",
+                price: 10,
+                ingredients: ["paneer", "spices"],
+            },
         ],
         reviews: [
             {
@@ -52,6 +64,24 @@ export const restaurants = [
                 name: "Chef pizza",
                 price: 10,
                 ingredients: ["bread", "cheese", "tomatoes", "chicken"],
+            },
+            {
+                id: "3c4d5e6f-3456-789a-bcde-f01234567890",
+                name: "Dal Makhani",
+                price: 9,
+                ingredients: ["lentils", "cream", "spices"],
+            },
+            {
+                id: "4d5e6f7g-4567-89ab-cdef-012345678901",
+                name: "Aloo Paratha",
+                price: 6,
+                ingredients: ["bread", "potato", "butter"],
+            },
+            {
+                id: "5e6f7g8h-5678-9abc-def0-123456789012",
+                name: "Chole Bhature",
+                price: 11,
+                ingredients: ["chickpeas", "bread", "spices"],
             },
         ],
         reviews: [
@@ -97,6 +127,36 @@ export const restaurants = [
                 price: 4,
                 ingredients: ["bread"],
             },
+            {
+                id: "0j1k2l3m-a1b2-c3d4-e5f6-789012345678",
+                name: "Pani Puri",
+                price: 7,
+                ingredients: ["bread", "potato", "spices"],
+            },
+            {
+                id: "1k2l3m4n-b2c3-d4e5-f678-901234567890",
+                name: "Masala Dosa",
+                price: 9,
+                ingredients: ["rice", "potato", "spices"],
+            },
+            {
+                id: "2l3m4n5o-c3d4-e5f6-7890-123456789012",
+                name: "Idli Sambhar",
+                price: 8,
+                ingredients: ["rice", "lentils", "spices"],
+            },
+            {
+                id: "3m4n5o6p-d4e5-f678-9012-345678901234",
+                name: "Fish Curry",
+                price: 14,
+                ingredients: ["fish", "coconut", "spices"],
+            },
+            {
+                id: "4n5o6p7q-e5f6-7890-1234-567890123456",
+                name: "Kadai Paneer",
+                price: 11,
+                ingredients: ["paneer", "tomato", "spices"],
+            },
         ],
         reviews: [
             {
@@ -122,6 +182,30 @@ export const restaurants = [
                 name: "Flat Iron Burger",
                 price: 10,
                 ingredients: ["bread", "beef"],
+            },
+            {
+                id: "6f7g8h9i-6789-abcd-ef01-234567890123",
+                name: "Vegetable Biryani",
+                price: 13,
+                ingredients: ["rice", "vegetables", "spices"],
+            },
+            {
+                id: "7g8h9i0j-789a-bcde-f012-345678901234",
+                name: "Mutton Rogan Josh",
+                price: 16,
+                ingredients: ["mutton", "yogurt", "spices"],
+            },
+            {
+                id: "8h9i0j1k-89ab-cdef-0123-456789012345",
+                name: "Palak Paneer",
+                price: 12,
+                ingredients: ["paneer", "spinach", "cream"],
+            },
+            {
+                id: "9i0j1k2l-9abc-def0-1234-567890123456",
+                name: "Tandoori Chicken",
+                price: 15,
+                ingredients: ["chicken", "yogurt", "spices"],
             },
         ],
         reviews: [

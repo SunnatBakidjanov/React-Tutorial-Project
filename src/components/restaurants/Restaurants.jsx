@@ -3,6 +3,7 @@ import { restaurants } from "../../../mock/mock";
 import { RestaurantItem } from "./restaurantItem/RestaurantItem";
 import { RestaurantTabs } from "./restaurantTabs/RestaurantTabs";
 import { validateRestaurant } from "./validateRestaurant";
+import styles from "./restaurants.module.scss";
 
 export const Restaurants = () => {
     const { activeTabId, handleSetIdOnClick } = useTabs(restaurants);
@@ -13,7 +14,7 @@ export const Restaurants = () => {
 
     return (
         <div className='restaurants'>
-            <h1 className='main-title'>Рестораны</h1>
+            <h1 className={styles.h1}>Рестораны</h1>
 
             <RestaurantTabs restaurants={restaurants} handleSetIdOnClick={handleSetIdOnClick} />
 
