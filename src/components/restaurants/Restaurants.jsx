@@ -17,13 +17,7 @@ export const Restaurants = () => {
 
             <RestaurantTabs restaurants={restaurants} handleSetIdOnClick={handleSetIdOnClick} />
 
-            {validatedRestaurant ? (
-                <>
-                    <RestaurantItem {...validatedRestaurant} />
-                </>
-            ) : (
-                <p>Что-то пошло не так</p>
-            )}
+            {validatedRestaurant ? <RestaurantItem {...validatedRestaurant} /> : <p>Что-то пошло не так</p>}
         </div>
     );
 };
