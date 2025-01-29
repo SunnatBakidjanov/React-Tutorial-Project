@@ -1,7 +1,8 @@
-import { useCount } from "./useCount";
+import { Counter } from "../counter/Counter";
+import { useCount } from "../hooks/useCount";
 
 export const Dish = ({ dish, price, ingredients }) => {
-    const { count, onIncrement, onDecrement } = useCount();
+    const countState = useCount();
 
     return (
         <>
@@ -9,15 +10,9 @@ export const Dish = ({ dish, price, ingredients }) => {
             <p className='price'>Price: {price}</p>
             <p className='ingredients'>Ingredients: {ingredients}</p>
 
-            <button style={{ width: "20px", height: "20px" }} onClick={onDecrement}>
-                -
-            </button>
-            <p>{count}</p>
-            <button style={{ width: "20px", height: "20px" }} onClick={onIncrement}>
-                +
-            </button>
+            <Counter {...countState} />
 
-            <p className='total-cost'>Total cost: {price * count}</p>
+            <p className='total-cost'>{price * countState.count || 0}</p>
         </>
     );
 };
