@@ -10,7 +10,7 @@ export const ReviewForm = () => {
         <>
             <h3>Форма</h3>
 
-            <form className='form' action='#'>
+            <form className='form' onSubmit={e => e.preventDefault()}>
                 <div className='form-group'>
                     <label htmlFor='adress'>Введите ваш адресс</label>
                     <input type='text' value={address} name='adress' id='adress' onChange={event => setAddress(event.target.value)} />

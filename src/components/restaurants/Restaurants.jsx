@@ -3,7 +3,6 @@ import { restaurants } from "../../../mock/mock";
 import { RestaurantItem } from "./restaurantItem/RestaurantItem";
 import { RestaurantTabs } from "./restaurantTabs/RestaurantTabs";
 import { validateRestaurant } from "./validateRestaurant";
-import { ReviewForm } from "./review-form/ReviewForm";
 
 export const Restaurants = () => {
     const { activeTabId, handleSetIdOnClick } = useTabs(restaurants);
@@ -19,13 +18,9 @@ export const Restaurants = () => {
             <RestaurantTabs restaurants={restaurants} handleSetIdOnClick={handleSetIdOnClick} />
 
             {validatedRestaurant ? (
-                <ul className='restaurants-list'>
-                    <li key={restaurants.id}>
-                        <RestaurantItem {...validatedRestaurant} />
-
-                        <ReviewForm />
-                    </li>
-                </ul>
+                <>
+                    <RestaurantItem {...validatedRestaurant} />
+                </>
             ) : (
                 <p>Что-то пошло не так</p>
             )}
