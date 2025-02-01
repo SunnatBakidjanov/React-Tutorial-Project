@@ -5,10 +5,8 @@ import "./main.scss";
 
 export const App = () => {
     return (
-        <div className='page'>
-            <Layout>
-                <Restaurants />
-            </Layout>
-        </div>
+        <Layout>
+            <Restaurants />
+        </Layout>
     );
 };

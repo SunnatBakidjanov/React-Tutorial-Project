@@ -1,27 +1,21 @@
-import { useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
+
+const calculateScrollProgress = () => {
+    const page = document.documentElement;
+    const scrollHeight = page.scrollHeight - page.clientHeight;
+    const scrollTop = page.scrollTop;
+    return (scrollTop / scrollHeight) * 100;
+};
 
 export const useProgressBar = () => {
-    const progressBar = useRef(null);
-    const page = useRef(null);
+    const [progress, setProgress] = useState(0);
 
     useEffect(() => {
-        page.current = document.documentElement;
+        const handleScroll = () => setProgress(calculateScrollProgress());
 
-        function progress() {
-            if (progressBar.current && page.current) {
-                const scrollHeight = page.current.scrollHeight - page.current.clientHeight;
-                const scrollTop = page.current.scrollTop;
-                const progressWidth = (scrollTop / scrollHeight) * 100;
-                console.log(progressWidth);
-
-                progressBar.current.style.setProperty("--progress-bar-width", `${progressWidth}%`);
-            }
-        }
-
-        window.addEventListener("scroll", progress);
-
-        return () => window.removeEventListener("scroll", progress);
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    return { progressBar };
+    return { progress };
 };
