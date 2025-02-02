@@ -1,0 +1,31 @@
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+}
+
+.button {
+    position: absolute;
+    font-size: 100px;
+
+    &Prev {
+        left: 0;
+    }
+
+    &Next {
+        right: 0;
+    }
+}
+
+.slider {
+    display: flex;
+    column-gap: 50px;
+}
+
+.slide {
+    transition: transform 10s ease-in-out, opacity 0.4s ease-in-out;
+    opacity: 1;
+}

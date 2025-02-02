@@ -1,14 +1,15 @@
-export const TabsButtons = ({ restaurants, handleSetIdOnClick }) => {
-    return restaurants.map(restaurant => {
-        const validateRestaurant = {
-            ...restaurant,
-            name: restaurant.name?.trim() || "Ресторан",
-        };
+import { validateRestaurantItem } from "./validateResturantItem";
 
-        return (
-            <button key={restaurant.id} className='restaurant-tab' style={{ padding: "10px 50px", cursor: "pointer" }} onClick={() => handleSetIdOnClick(restaurant.id)}>
-                {validateRestaurant.name}
-            </button>
-        );
-    });
+import styles from "./tabsButtons.module.scss";
+
+export const TabsButtons = ({ restaurants, handleSetIdOnClick }) => {
+    const modernRestaurants = [restaurants[restaurants.length - 1], ...restaurants, restaurants[0]];
+
+    const validatedRestaurants = validateRestaurantItem(modernRestaurants);
+
+    return validatedRestaurants.map((restaurant, index) => (
+        <button key={restaurant.id} className={`${styles.button} ${modernRestaurants.length % 2 === 0 ? (modernRestaurants.length - 1 === index ? styles.last : "") : ""}`} onClick={() => handleSetIdOnClick(restaurant.id)}>
+            {restaurant.name}
+        </button>
+    ));
 };
