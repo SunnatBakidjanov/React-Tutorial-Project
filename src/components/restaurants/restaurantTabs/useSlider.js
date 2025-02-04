@@ -1,72 +1,66 @@
-import { useReducer, useEffect } from "react";
+import { useReducer, useEffect, useRef } from "react";
 
-const TRANSITION_DELAY = 400;
-const STEP = 300; // равен ширине слайда
+const CENTRAL_POSITION = { START_INDEX: 0 };
+const TRANSITION_DURATION = 400;
 
-const centralPositionConfig = { startingPosition: 0 };
-
-const INITIAL_VALUE = restaurants => {
-    const startingPosition = Math.max(0, Math.min(centralPositionConfig.startingPosition, restaurants.length - 1));
-
+const initializeState = restaurants => {
+    const startIndex = Math.max(0, Math.min(CENTRAL_POSITION.START_INDEX, restaurants.length - 1));
     const shuffledRestaurants = [...restaurants];
-    const centralRestaurant = shuffledRestaurants.splice(startingPosition, 1)[0];
+    const centralRestaurant = shuffledRestaurants.splice(startIndex, 1)[0];
     shuffledRestaurants.splice(Math.floor(shuffledRestaurants.length / 2), 0, centralRestaurant);
 
     return {
         restaurants: shuffledRestaurants,
         offset: 0,
-        disable: false,
-        transitionDelay: TRANSITION_DELAY,
-        direction: null,
-        centralElement: Math.floor(shuffledRestaurants.length / 2),
-        activeElement: { transform: "scale(1.2)", opacity: "1" },
-        inactivelElement: { transform: "scale(1)", opacity: "0.6" },
+        buttonRef: null,
+        isTransitioning: false,
+        transitionDuration: TRANSITION_DURATION,
+        centralIndex: Math.floor(shuffledRestaurants.length / 2),
+        activeStyle: { transform: "scale(1.2)", opacity: "1" },
+        inactiveStyle: { transform: "scale(1)", opacity: "0.6" },
     };
 };
 
-const PREV_SLIDE = "PREV_SLIDE";
-const NEXT_SLIDE = "NEXT_SLIDE";
-const TRANSITION_END = "TRANSITION_END";
+const ACTIONS = {
+    PREV_SLIDE: "PREV_SLIDE",
+    NEXT_SLIDE: "NEXT_SLIDE",
+    TRANSITION_END: "TRANSITION_END",
+};
 
-const reducer = (state, { type }) => {
-    switch (type) {
-        case PREV_SLIDE:
+const sliderReducer = (state, action) => {
+    switch (action.type) {
+        case ACTIONS.PREV_SLIDE:
             return {
                 ...state,
-                transitionDelay: TRANSITION_DELAY,
-                offset: state.offset - STEP,
-                disable: true,
-                direction: "prev",
-                centralElement: state.centralElement + 1,
-                inactivelElement: { transform: "scale(1)", opacity: "0.6" },
-                activeElement: { transform: "scale(1.2)", opacity: "1" },
+                transitionDuration: TRANSITION_DURATION,
+                offset: state.offset - state.buttonRef.current.offsetWidth - 50,
+                isTransitioning: true,
+                transitionDirection: "prev",
+                centralIndex: state.centralIndex + 1,
             };
 
-        case NEXT_SLIDE:
+        case ACTIONS.NEXT_SLIDE:
             return {
                 ...state,
-                disable: true,
-                direction: "next",
-                centralElement: state.centralElement - 1,
-                transitionDelay: TRANSITION_DELAY,
-                offset: state.offset + STEP,
-                inactivelElement: { transform: "scale(1)", opacity: "0.6" },
-                activeElement: { transform: "scale(1.2)", opacity: "1" },
+                transitionDuration: TRANSITION_DURATION,
+                offset: state.offset + state.buttonRef.current.offsetWidth + 50,
+                isTransitioning: true,
+                transitionDirection: "next",
+                centralIndex: state.centralIndex - 1,
             };
 
-        case TRANSITION_END: {
-            let updatedRestaurants = [...state.restaurants];
-
-            if (state.direction === "prev") updatedRestaurants.push(updatedRestaurants.shift());
-            if (state.direction === "next") updatedRestaurants.unshift(updatedRestaurants.pop());
+        case ACTIONS.TRANSITION_END: {
+            const updatedRestaurants = [...state.restaurants];
+            if (state.transitionDirection === "prev") updatedRestaurants.push(updatedRestaurants.shift());
+            if (state.transitionDirection === "next") updatedRestaurants.unshift(updatedRestaurants.pop());
 
             return {
                 ...state,
-                transitionDelay: 0,
+                transitionDuration: 0,
                 offset: 0,
-                disable: false,
+                isTransitioning: false,
                 restaurants: updatedRestaurants,
-                centralElement: updatedRestaurants.length / 2,
+                centralIndex: Math.floor(updatedRestaurants.length / 2),
             };
         }
 
@@ -76,20 +70,21 @@ const reducer = (state, { type }) => {
 };
 
 export const useSlider = restaurants => {
-    const [state, dispatch] = useReducer(reducer, INITIAL_VALUE(restaurants));
+    const [state, dispatch] = useReducer(sliderReducer, initializeState(restaurants));
+    state.buttonRef = useRef(null);
 
-    const prevSlide = () => dispatch({ type: PREV_SLIDE });
-    const nextSlide = () => dispatch({ type: NEXT_SLIDE });
+    const goToPrevSlide = () => dispatch({ type: ACTIONS.PREV_SLIDE });
+    const goToNextSlide = () => dispatch({ type: ACTIONS.NEXT_SLIDE });
 
     useEffect(() => {
-        if (!state.disable) return;
+        if (!state.isTransitioning) return;
 
-        const timeout = setTimeout(() => {
-            dispatch({ type: TRANSITION_END });
-        }, TRANSITION_DELAY);
+        const transitionTimer = setTimeout(() => {
+            dispatch({ type: ACTIONS.TRANSITION_END });
+        }, TRANSITION_DURATION);
 
-        return () => clearTimeout(timeout);
-    }, [state.disable]);
+        return () => clearTimeout(transitionTimer);
+    }, [state.isTransitioning]);
 
-    return { ...state, prevSlide, nextSlide };
+    return { ...state, goToPrevSlide, goToNextSlide };
 };

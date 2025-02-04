@@ -1,12 +1,22 @@
-import { validateRestaurantItem } from "./validateResturantItem";
-import { getButtonClass } from "./getButtonClass";
+import { useEffect, useState } from "react";
+
+import { validateRestaurantItem } from "./scripts/validateResturantItem";
+import { getButtonClass } from "./scripts/getButtonClass";
 
 import styles from "./tabsButtons.module.scss";
 
-export const TabsButtons = ({ restaurants, handleSetIdOnClick, inactivelElement, activeElement, centralElement, clickOnPrevSlide, clickOnNextSlide }) => {
+export const TabsButtons = ({ restaurants, setActiveRestaurant, inactivelElement, activeElement, centralElement, clickOnPrevSlide, clickOnNextSlide, buttonWidth }) => {
     const modernRestaurants = [restaurants[restaurants.length - 1], ...restaurants, restaurants[0]];
-
     const validatedRestaurants = validateRestaurantItem(modernRestaurants);
+
+    const [currentCentralElement, setCurrentCentralElement] = useState(centralElement);
+
+    useEffect(() => {
+        if (currentCentralElement !== centralElement) {
+            setCurrentCentralElement(centralElement);
+            setActiveRestaurant(validatedRestaurants[centralElement].id);
+        }
+    }, [currentCentralElement, centralElement, validatedRestaurants, setActiveRestaurant]);
 
     return validatedRestaurants.map((restaurant, index) => {
         const transformStyles = index === centralElement ? activeElement.transform : inactivelElement.transform;
@@ -15,9 +25,9 @@ export const TabsButtons = ({ restaurants, handleSetIdOnClick, inactivelElement,
         return (
             <button
                 key={restaurant.id}
+                ref={buttonWidth}
                 className={getButtonClass(index, modernRestaurants.length, styles)}
                 onClick={() => {
-                    handleSetIdOnClick(restaurant.id);
                     index === centralElement + 1 ? clickOnPrevSlide() : false;
                     index === centralElement - 1 ? clickOnNextSlide() : false;
                 }}
