@@ -1,0 +1,18 @@
+@mixin titles($font-size, $margin-top) {
+    margin-top: $margin-top;
+    padding-bottom: 5px;
+    font-family: Lobster, serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: $font-size;
+    color: var(--title-color);
+    border-bottom: 3px solid var(--accent-color);
+}
+
+.title {
+    @include titles(3.5em, 0)
+}
+
+.Cusinestitle {
+    @include titles(3em, 30px)
+}

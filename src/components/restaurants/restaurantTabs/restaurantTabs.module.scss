@@ -15,19 +15,6 @@
     overflow: hidden;
 }
 
-.button {
-    position: absolute;
-    font-size: 100px;
-
-    &Prev {
-        left: 0;
-    }
-
-    &Next {
-        right: 0;
-    }
-}
-
 .slider {
     display: flex;
     justify-content: center;

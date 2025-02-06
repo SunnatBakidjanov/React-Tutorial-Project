@@ -29,7 +29,7 @@ const ACTIONS = {
 
 const sliderReducer = (state, action) => {
     switch (action.type) {
-        case ACTIONS.PREV_SLIDE:
+        case ACTIONS.PREV_SLIDE: {
             return {
                 ...state,
                 transitionDuration: TRANSITION_DURATION,
@@ -38,8 +38,9 @@ const sliderReducer = (state, action) => {
                 transitionDirection: "prev",
                 centralIndex: state.centralIndex + 1,
             };
+        }
 
-        case ACTIONS.NEXT_SLIDE:
+        case ACTIONS.NEXT_SLIDE: {
             return {
                 ...state,
                 transitionDuration: TRANSITION_DURATION,
@@ -48,6 +49,7 @@ const sliderReducer = (state, action) => {
                 transitionDirection: "next",
                 centralIndex: state.centralIndex - 1,
             };
+        }
 
         case ACTIONS.TRANSITION_END: {
             const updatedRestaurants = [...state.restaurants];

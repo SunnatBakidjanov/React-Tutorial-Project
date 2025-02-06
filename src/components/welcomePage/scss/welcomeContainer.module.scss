@@ -1,0 +1,16 @@
+@mixin container($margin-top, $height, $min-height) {
+    margin-top: $margin-top;
+    width: calc(100% - var(--welcome-page-indents));
+    height: $height;
+    min-height: $min-height;
+}
+
+.sliderContainer {
+    @include container(40px, 45%, 200px);
+}
+
+.cusinesFilter {
+    @include container(20px, 25%, 200px);
+
+    border: var(--border-size) solid var(--main-color);
+}
