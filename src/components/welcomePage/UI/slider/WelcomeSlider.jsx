@@ -1,12 +1,19 @@
+import { WelcomeSlides } from "../slides/WelcomeSlides";
+
 import styles from "./welcomeSlider.module.scss";
 import stylesContainer from "../../scss/welcomeContainer.module.scss";
 
-export const WelcomeSlider = () => {
+import { useWelcomeSlider } from "../../hooks/useWelcomeSlider.js";
+
+export const WelcomeSlider = ({ restaurants }) => {
+    const { state } = useWelcomeSlider(restaurants.length);
+    const { offset } = state;
+
     return (
         <div className={stylesContainer.sliderContainer}>
-            <div className={styles.slider}>
-                <div className={styles.slides}></div>
-            </div>
+            <ul className={styles.slider} style={{ transform: `translateY(-${offset * 100}%)` }}>
+                <WelcomeSlides restaurants={restaurants} />
+            </ul>
         </div>
     );
 };

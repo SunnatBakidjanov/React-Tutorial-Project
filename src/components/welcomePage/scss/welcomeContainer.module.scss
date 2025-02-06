@@ -6,6 +6,8 @@
 }
 
 .sliderContainer {
+    overflow: hidden;
+
     @include container(40px, 45%, 200px);
 }
 

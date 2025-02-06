@@ -12,8 +12,9 @@
     --progressbar-bg-color: var(--accent-color);
     --progressbar-progress-scroll-bg-color: var(--main-color);
 
-    // title
+    // same
     --title-color: var(--main-color);
+    --text-color: var(--black);
 
     // button
     --button-color: var(--main-color);
@@ -33,18 +34,18 @@
     font-family: Lobster;
     font-style: normal;
     font-weight: 400;
-    src: url('../../fonts/Lobster/Lobster-Regular.ttf') format('opentype');
+    src: url('/fonts/Lobster/Lobster-Regular.ttf') format('opentype');
 }
 
 @font-face {
     font-family: Roboto;
     font-style: normal;
     font-weight: 400;
-    src: url('../../fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf') format('opentype');
+    src: url('/fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf') format('opentype');
 }
 
 body {
-    font-family: Roboto, serif;
+    font-family: Lobster, serif;
     font-weight: 400;
 }
 

@@ -1,7 +1,6 @@
 @mixin titles($font-size, $margin-top) {
     margin-top: $margin-top;
     padding-bottom: 5px;
-    font-family: Lobster, serif;
     font-style: italic;
     font-weight: 400;
     font-size: $font-size;
@@ -13,6 +12,13 @@
     @include titles(3.5em, 0)
 }
 
-.Cusinestitle {
+.cusinesTitle {
     @include titles(3em, 30px)
+}
+
+.sliderTitle {
+   width: 90%;
+   text-align: center;
+
+    @include titles(2.5em, 20px)
 }
