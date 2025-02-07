@@ -10,13 +10,15 @@ import { restaurants } from "../../../mock/mock";
 import styles from "./welcomePage.module.scss";
 
 export const WelcomePage = () => {
+    const updateRestaurants = [...restaurants];
+
     return (
         <div className={styles.welcomePage}>
             <div className='container'>
                 <Header />
                 <div className={styles.welcomeContent}>
                     <Title />
-                    <WelcomeSlider restaurants={restaurants} />
+                    <WelcomeSlider restaurants={updateRestaurants} />
                     <CuisinesTitle />
                     <RestaurantFilter />
                     <FormButton />

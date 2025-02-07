@@ -1,18 +1,25 @@
 import { useReducer, useEffect } from "react";
 
-const INITIAL_VALUE = {
-    opacity: 1,
-    transform: 0,
-    offset: 0,
+const START_POSITION = 0;
+
+const INITIAL_VALUE = restaurants => {
+    return {
+        opacity: 1,
+        transform: 0,
+        offset: START_POSITION,
+        activeId: restaurants[START_POSITION]?.id,
+    };
 };
 
 const TIMERS = {
-    HIDE_SLIDE: 6000,
-    SHOW_SLIDE: 1100, // transition: opacity 1s ease-out
+    HIDE_SLIDE: 5000,
+    TRANSITION_DURATION: 1000,
+    SHOW_SLIDE: 200,
 };
 
 const ACTIONS = {
     HIDE_SLIDE: "HIDE_SLIDE",
+    CHANGE_SLIDE: "CHANGE_SLIDE",
     SHOW_SLIDE: "SHOW_SLIDE",
 };
 
@@ -22,7 +29,19 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 opacity: 0,
+                transform: 45,
+            };
+        }
+
+        case ACTIONS.CHANGE_SLIDE: {
+            const nextOffset = state.offset + 1 >= action.restaurants.length ? 0 : state.offset + 1;
+
+            return {
+                ...state,
+                opacity: 0,
                 transform: 50,
+                offset: nextOffset,
+                activeId: action.restaurants[nextOffset]?.id,
             };
         }
 
@@ -31,7 +50,6 @@ const reducer = (state, action) => {
                 ...state,
                 opacity: 1,
                 transform: 0,
-                offset: state.offset + 1 >= action.length ? 0 : state.offset + 1,
             };
         }
 
@@ -40,26 +58,33 @@ const reducer = (state, action) => {
     }
 };
 
-export const useWelcomeSlider = length => {
-    const [state, dispatch] = useReducer(reducer, INITIAL_VALUE);
+export const useWelcomeSlider = restaurants => {
+    const [state, dispatch] = useReducer(reducer, INITIAL_VALUE(restaurants));
 
     useEffect(() => {
-        if (state.opacity === 1) {
-            const hideSlideTimer = setTimeout(() => {
-                dispatch({ type: ACTIONS.HIDE_SLIDE });
-            }, TIMERS.HIDE_SLIDE);
+        switch (state.transform) {
+            case 0:
+                setTimeout(() => {
+                    dispatch({ type: ACTIONS.HIDE_SLIDE });
+                }, TIMERS.HIDE_SLIDE);
+                break;
 
-            return () => clearTimeout(hideSlideTimer);
+            case 45:
+                setTimeout(() => {
+                    dispatch({ type: ACTIONS.CHANGE_SLIDE, restaurants });
+                }, TIMERS.TRANSITION_DURATION);
+                break;
+
+            case 50:
+                setTimeout(() => {
+                    dispatch({ type: ACTIONS.SHOW_SLIDE });
+                }, TIMERS.SHOW_SLIDE);
+                break;
+
+            default:
+                return dispatch({ type: ACTIONS.SHOW_SLIDE });
         }
-
-        if (state.opacity === 0) {
-            const showSlide = setTimeout(() => {
-                dispatch({ type: ACTIONS.SHOW_SLIDE, length });
-            }, TIMERS.SHOW_SLIDE);
-
-            return () => clearTimeout(showSlide);
-        }
-    }, [state.opacity, state.offset, length]);
+    }, [state.transform, state.offset, restaurants]);
 
     return { state };
 };
