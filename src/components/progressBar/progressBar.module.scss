@@ -1,14 +1,14 @@
 .container {
     position: fixed;
+    z-index: 100;
     top: 0;
     width: 100%;
-    height: 20px;
-    background-color: white;
+    height: var(--progressbar-height);
+    background-color: var(--progressbar-bg-color);
 }
 
 .progress {
-    background-color: red;
-    width: var(--progress-bar-width);
+    background-color: var(--progressbar-progress-scroll-bg-color);
     height: inherit;
     will-change: width;
 }

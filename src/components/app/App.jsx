@@ -1,5 +1,6 @@
 import { Layout } from "../layout/Layout";
-import { Restaurants } from "../restaurants/restaurants";
+import { Restaurants } from "../restaurants/Restaurants";
+
 import "./reset.scss";
 import "./main.scss";
 

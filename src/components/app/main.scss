@@ -1,3 +1,61 @@
+// font-family: "Roboto", serif;
+// font-family: "Lobster", serif;
+
 :root {
-    --progress-bar-width: 0;
+    // mainColors
+    --main-color: #F3F4F6;
+    --black: #000;
+    --accent-color: #FFD25D;
+
+    // colors
+    // progressBar
+    --progressbar-bg-color: var(--accent-color);
+    --progressbar-progress-scroll-bg-color: var(--main-color);
+
+    // same
+    --title-color: var(--main-color);
+    --text-color: var(--black);
+
+    // button
+    --button-color: var(--main-color);
+    --button-hover-color: var(--black);
+    --button-hover-bg-color: var(--accent-color);
+
+    // size
+    --page-container-width: 1400px;
+    --progressbar-height: 15px;
+    --header-heigth: 70px;
+    --bg-blur: blur(20px);
+    --welcome-page-indents: 60px;
+    --border-size: 2px;
 }
+
+@font-face {
+    font-family: Lobster;
+    font-style: normal;
+    font-weight: 400;
+    src: url('/fonts/Lobster/Lobster-Regular.ttf') format('opentype');
+}
+
+@font-face {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 400;
+    src: url('/fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf') format('opentype');
+}
+
+body {
+    font-family: Lobster, serif;
+    font-weight: 400;
+}
+
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--accent-color);
+}
+
+// #F3F4F6 светлый
+// #FFD25D желтый

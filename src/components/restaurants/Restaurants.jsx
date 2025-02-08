@@ -1,22 +1,25 @@
 import { useTabs } from "./hooks/useTabs";
+
 import { restaurants } from "../../../mock/mock";
 import { RestaurantItem } from "./restaurantItem/RestaurantItem";
 import { RestaurantTabs } from "./restaurantTabs/RestaurantTabs";
-import { validateRestaurant } from "./validateRestaurant";
-import styles from "./restaurants.module.scss";
+
+import { validateRestaurants } from "./validateRestaurants";
+
+import styles from "./restauratns.module.scss";
 
 export const Restaurants = () => {
-    const { activeTabId, handleSetIdOnClick } = useTabs(restaurants);
+    const updateRestaurants = [...restaurants];
 
-    const findRestaurant = restaurants.find(restaurant => restaurant.id === activeTabId);
+    const { activeTabId, setActiveRestaurant } = useTabs(updateRestaurants);
 
-    const validatedRestaurant = validateRestaurant(findRestaurant);
+    const findRestaurant = updateRestaurants.find(restaurant => restaurant.id === activeTabId);
+
+    const validatedRestaurant = validateRestaurants(findRestaurant);
 
     return (
-        <div className='restaurants'>
-            <h1 className={styles.h1}>Рестораны</h1>
-
-            <RestaurantTabs restaurants={restaurants} handleSetIdOnClick={handleSetIdOnClick} />
+        <div className={styles.container}>
+            <RestaurantTabs restaurants={restaurants} setActiveRestaurant={setActiveRestaurant} />
 
             {validatedRestaurant ? <RestaurantItem {...validatedRestaurant} /> : <p>Что-то пошло не так</p>}
         </div>

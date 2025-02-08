@@ -1,0 +1,30 @@
+.header {
+    margin-top: var(--progressbar-height);
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 30px;
+    height: var(--header-heigth);
+    border-bottom: 3px solid var(--main-color);
+}
+
+@media (width <= 1024px) {
+    .wrapper {
+        padding: 0px 25px;
+    }
+}
+
+@media (width <= 768px) {
+    .wrapper {
+        padding: 0px 20px;
+    }
+}
+
+@media (width <= 425px) {
+    .wrapper {
+        padding: 0px 10px;
+    }
+}

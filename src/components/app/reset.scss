@@ -1,9 +1,8 @@
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     text-decoration: none;
-    border: none;
 }
 
 ul, ul li {
@@ -14,12 +13,14 @@ img {
 	vertical-align: top;
 }
 
-button, input[type="submit"] {
+button {
     display: inline-block;
-    box-shadow: none;
-    background-color: transparent;
+    font-family: Lobster, serif;
     background: none;
+    background-color: transparent;
+    border: none;
     cursor: pointer;
+    box-shadow: none;
 }
 
 label {
