@@ -6,15 +6,19 @@ import { RestaurantTabs } from "./restaurantTabs/RestaurantTabs";
 
 import { validateRestaurants } from "./validateRestaurants";
 
-export const Restaurants = () => {
-    const { activeTabId, setActiveRestaurant } = useTabs(restaurants);
+import styles from "./restauratns.module.scss";
 
-    const findRestaurant = restaurants.find(restaurant => restaurant.id === activeTabId);
+export const Restaurants = () => {
+    const updateRestaurants = [...restaurants];
+
+    const { activeTabId, setActiveRestaurant } = useTabs(updateRestaurants);
+
+    const findRestaurant = updateRestaurants.find(restaurant => restaurant.id === activeTabId);
 
     const validatedRestaurant = validateRestaurants(findRestaurant);
 
     return (
-        <div className='restaurants'>
+        <div className={styles.container}>
             <RestaurantTabs restaurants={restaurants} setActiveRestaurant={setActiveRestaurant} />
 
             {validatedRestaurant ? <RestaurantItem {...validatedRestaurant} /> : <p>Что-то пошло не так</p>}

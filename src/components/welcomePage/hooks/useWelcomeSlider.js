@@ -3,18 +3,20 @@ import { useReducer, useEffect } from "react";
 const START_POSITION = 0;
 
 const INITIAL_VALUE = restaurants => {
+    const VALIDATE_POSITION = Math.max(0, Math.min(restaurants.length - 1, START_POSITION));
+
     return {
         opacity: 1,
         transform: 0,
-        offset: START_POSITION,
-        activeId: restaurants[START_POSITION]?.id,
+        offset: VALIDATE_POSITION,
+        activeId: restaurants[VALIDATE_POSITION]?.id,
     };
 };
 
 const TIMERS = {
     HIDE_SLIDE: 5000,
     TRANSITION_DURATION: 1000,
-    SHOW_SLIDE: 200,
+    SHOW_SLIDE: 100,
 };
 
 const ACTIONS = {
@@ -84,7 +86,7 @@ export const useWelcomeSlider = restaurants => {
             default:
                 return dispatch({ type: ACTIONS.SHOW_SLIDE });
         }
-    }, [state.transform, state.offset, restaurants]);
+    }, [state.transform, restaurants]);
 
     return { state };
 };

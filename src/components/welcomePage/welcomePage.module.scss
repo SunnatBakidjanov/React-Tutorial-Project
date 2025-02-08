@@ -6,6 +6,11 @@
     background-attachment: fixed;
 }
 
+.container {
+    margin: 0 auto;
+    max-width: var(--page-container-width);
+}
+
 .welcomeContent {
     display: flex;
     flex-direction: column;

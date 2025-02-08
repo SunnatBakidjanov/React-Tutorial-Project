@@ -1,5 +1,5 @@
 import { Footer } from "../footer/Footer";
-import { ProgressBar } from "../progressBar/progressBar";
+import { ProgressBar } from "../progressBar/ProgressBar";
 import { WelcomePage } from "../welcomePage/WelcomePage";
 import styles from "./layout.module.scss";
 
@@ -10,9 +10,7 @@ export const Layout = ({ children }) => {
             <WelcomePage />
 
             <main className={styles.content}>
-                <div className='container'>
-                    <div className={styles.wrapper}>{children}</div>
-                </div>
+                <div className={styles.wrapper}>{children}</div>
             </main>
 
             <Footer />

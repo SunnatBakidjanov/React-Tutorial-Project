@@ -9,6 +9,14 @@
     height: auto;
 }
 
+.title {
+    position: absolute;
+    left: -9999px;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
 @media (width <= 1024px) {
     .container {
         width: 180px;

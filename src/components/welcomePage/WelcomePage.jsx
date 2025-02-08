@@ -14,7 +14,7 @@ export const WelcomePage = () => {
 
     return (
         <div className={styles.welcomePage}>
-            <div className='container'>
+            <div className={styles.container}>
                 <Header />
                 <div className={styles.welcomeContent}>
                     <Title />
