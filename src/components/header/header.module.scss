@@ -20,6 +20,11 @@
     border-bottom-color: var(--lines-secondary-color);
 }
 
+.authContainer {
+    display: flex;
+    column-gap: 10px;
+}
+
 @media (width <= 1024px) {
     .wrapper {
         padding: 0 25px;

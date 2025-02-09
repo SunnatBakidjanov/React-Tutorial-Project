@@ -2,7 +2,7 @@ import { use } from "react";
 import classNames from "classnames";
 
 import { useProgressBar } from "./useProgressBar";
-import { ThemeContext } from "../contexts/theme/themeContext";
+import { ThemeContext } from "../contexts/theme/index";
 
 import style from "./progressBar.module.scss";
 

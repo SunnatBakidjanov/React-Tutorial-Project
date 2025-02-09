@@ -1,22 +1,25 @@
 import { use } from "react";
 import classNames from "classnames";
 
-import { ThemeContext } from "../../../contexts/theme/index";
+import { AuthContext } from "../../../contexts/authorization/index";
+import { ThemeContext } from "../../../contexts/theme";
 
 import styles from "../../scss/button.module.scss";
 
-export const ToggleThemeButton = () => {
-    const { theme, toggleTheme } = use(ThemeContext);
+export const AuthButton = () => {
+    const { toggleAuth, auth } = use(AuthContext);
+    const { theme } = use(ThemeContext);
 
     return (
         <button
+            type='button'
+            onClick={toggleAuth}
             className={classNames(styles.button, {
                 [styles.mainTheme]: theme === "main",
                 [styles.secondaryTheme]: theme === "secondary",
             })}
-            onClick={toggleTheme}
         >
-            Изменить тему
+            {!auth.isAuthed ? "Войти" : "Выйти"}
         </button>
     );
 };

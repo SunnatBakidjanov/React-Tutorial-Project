@@ -1,11 +1,13 @@
 import classNames from "classnames";
 import { use } from "react";
 
-import { ThemeContext } from "../contexts/theme/themeContext";
+import { ThemeContext } from "../contexts/theme/index";
 import { Logo } from "./UI/logo/Logo";
 import { ToggleThemeButton } from "./UI/toggleThemeButton/ToggleThemeButton";
+import { UserName } from "./UI/user/UserName";
 
 import styles from "./header.module.scss";
+import { AuthButton } from "./UI/authButton/authButton";
 
 export const Header = () => {
     const { theme } = use(ThemeContext);
@@ -19,7 +21,12 @@ export const Header = () => {
                 })}
             >
                 <Logo />
-                <ToggleThemeButton />
+
+                <div className={styles.authContainer}>
+                    <ToggleThemeButton />
+                    <UserName />
+                    <AuthButton />
+                </div>
             </div>
         </header>
     );

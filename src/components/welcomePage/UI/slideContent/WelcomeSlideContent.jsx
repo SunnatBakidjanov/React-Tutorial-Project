@@ -1,7 +1,7 @@
 import { use } from "react";
 import classNames from "classnames";
 
-import { ThemeContext } from "../../../contexts/theme/themeContext";
+import { ThemeContext } from "../../../contexts/theme/index";
 
 import styles from "./slideContent.module.scss";
 import titleStyles from "../../scss/title.module.scss";

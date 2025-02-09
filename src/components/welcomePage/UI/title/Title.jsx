@@ -2,7 +2,7 @@ import { use } from "react";
 import classNames from "classnames";
 import styles from "../../scss/title.module.scss";
 
-import { ThemeContext } from "../../../contexts/theme/themeContext";
+import { ThemeContext } from "../../../contexts/theme/index";
 
 export const Title = ({ text, customStyle }) => {
     const { theme } = use(ThemeContext);

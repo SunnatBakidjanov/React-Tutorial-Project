@@ -10,9 +10,7 @@ export const Dish = ({ dish, price, ingredients }) => {
             <p className='price'>Price: {price}</p>
             <p className='ingredients'>Ingredients: {ingredients}</p>
 
-            <Counter {...countState} />
-
-            <p className='total-cost'>{price * countState.count || 0}</p>
+            <Counter {...countState} price={price} />
         </>
     );
 };

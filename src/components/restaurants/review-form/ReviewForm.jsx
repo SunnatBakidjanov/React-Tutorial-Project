@@ -1,12 +1,18 @@
+import { use } from "react";
+
 import { Counter } from "../counter/Counter";
 import { useForm } from "./useForm";
 
+import { AuthContext } from "../../contexts/authorization";
+
 export const ReviewForm = () => {
+    const { auth } = use(AuthContext);
+
     const { form, setAddress, setMessage, setIncrement, setDecrement, clearForm } = useForm();
 
     const { address, message, rating } = form;
 
-    return (
+    return auth.isAuthed ? (
         <>
             <h3>Форма</h3>
 
@@ -30,5 +36,5 @@ export const ReviewForm = () => {
                 </button>
             </form>
         </>
-    );
+    ) : null;
 };
