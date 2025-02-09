@@ -1,4 +1,6 @@
-import { Logo } from "../logo/logo";
+import { Logo } from "./UI/logo/Logo";
+import { ToggleThemeButton } from "./UI/toggleThemeButton/ToggleThemeButton";
+
 import styles from "./header.module.scss";
 
 export const Header = () => {
@@ -6,6 +8,7 @@ export const Header = () => {
         <header className={styles.header}>
             <div className={styles.wrapper}>
                 <Logo />
+                <ToggleThemeButton />
             </div>
         </header>
     );

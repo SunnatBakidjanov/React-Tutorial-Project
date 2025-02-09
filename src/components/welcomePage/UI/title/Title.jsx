@@ -1,5 +1,12 @@
-import styles from "../../scss/title.module.scss";
+import { use } from "react";
+import { ThemeContext } from "../../../contexts/theme/themeContext";
 
-export const Title = () => {
-    return <h2 className={styles.title}>Рестораны</h2>;
+export const Title = ({ text, customStyle }) => {
+    const { themeVariables } = use(ThemeContext);
+
+    return (
+        <h2 className={`${customStyle || ""}`} style={{ borderBottomColor: themeVariables["--welcome-page-title-border-color"], transition: themeVariables.transition }}>
+            {text}
+        </h2>
+    );
 };

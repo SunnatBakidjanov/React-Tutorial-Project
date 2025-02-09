@@ -6,8 +6,11 @@
     --main-color: #F3F4F6;
     --black: #000;
     --accent-color: #FFD25D;
+    --secondary-color: #d35400; 
+    --grey: #838383;
 
     // colors
+
     // progressBar
     --progressbar-bg-color: var(--accent-color);
     --progressbar-progress-scroll-bg-color: var(--main-color);
@@ -20,6 +23,8 @@
     --button-color: var(--main-color);
     --button-hover-color: var(--black);
     --button-hover-bg-color: var(--accent-color);
+
+    // scroll
 
     // size
     --page-container-width: 1400px;
@@ -47,14 +52,6 @@
 body {
     font-family: Lobster, serif;
     font-weight: 400;
-}
-
-body::-webkit-scrollbar {
-    width: 10px;
-}
-
-body::-webkit-scrollbar-thumb {
-    background-color: var(--accent-color);
 }
 
 // #F3F4F6 светлый

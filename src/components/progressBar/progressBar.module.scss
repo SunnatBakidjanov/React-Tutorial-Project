@@ -8,7 +8,7 @@
 }
 
 .progress {
-    background-color: var(--progressbar-progress-scroll-bg-color);
     height: inherit;
+    background-color: var(--progressbar-progress-scroll-bg-color);
     will-change: width;
 }

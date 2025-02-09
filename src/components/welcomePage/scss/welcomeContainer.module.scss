@@ -1,18 +1,19 @@
-@mixin container($margin-top, $height, $min-height) {
+@mixin container($margin-top, $height, $min-height, $max-height) {
     margin-top: $margin-top;
     width: calc(100% - var(--welcome-page-indents));
     height: $height;
     min-height: $min-height;
+    max-height: $max-height;
 }
 
 .sliderContainer {
     overflow: hidden;
 
-    @include container(40px, 45%, 200px);
+    @include container(40px, 45%, 370px, 600px);
 }
 
 .cusinesFilter {
-    @include container(20px, 25%, 200px);
+    @include container(20px, 25%, 200px, 350px);
 
     border: var(--border-size) solid var(--main-color);
 }

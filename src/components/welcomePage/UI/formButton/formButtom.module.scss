@@ -1,3 +1,12 @@
+.after {
+    position: absolute;
+    z-index: -1;
+    width: 0;
+    height: 100%;
+    background-color: var(--button-hover-bg-color);
+    content: '';
+}
+
 .button {
     position: relative;
     display: flex;
@@ -7,27 +16,13 @@
     width: calc(100% - var(--welcome-page-indents));
     height: 5%;
     min-height: 60px;
+    max-height: 70px;
     font-size: 2em;
     transition: color 0.3s ease-out;
     color: var(--button-color);
     border: var(--border-size) solid var(--main-color);
-    
 
-    &::after {
-        position: absolute;
-        z-index: -1;
-        width: 0;
-        height: 100%;
-        background-color: var(--button-hover-bg-color);
-        content: '';
-        transition: width 0.4s ease-out;
-    }
-
-    &:hover {
-        color: var(--button-hover-color);
-    }
-
-    &:hover::after {
+    &:hover .after {
         width: 100%;
     }
 }

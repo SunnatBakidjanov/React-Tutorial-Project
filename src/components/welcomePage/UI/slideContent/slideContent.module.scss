@@ -1,0 +1,35 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    height: inherit;
+    overflow: hidden;
+}
+
+.description {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    width: 90%;
+    height: 70%;
+    overflow: hidden;
+    font-size: 1.5em;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.line {
+    margin-bottom: 20px;
+    width: 90%;
+    height: 3px;
+    background-color: var(--accent-color);
+}
+
+.raiting {
+    width: 90%;
+    height: 10%;
+    min-height: 50px;
+    border: var(--border-size) solid var(--main-color);
+}
