@@ -24,12 +24,20 @@
     margin-bottom: 20px;
     width: 90%;
     height: 3px;
-    background-color: var(--accent-color);
+    transition: background-color var(--change-theme-transition);
+}
+
+.lineMainTheme {
+    background-color: var(--lines-main-color);
+}
+
+.lineSecondaryTheme {
+    background-color: var(--lines-secondary-color);
 }
 
 .raiting {
     width: 90%;
     height: 10%;
     min-height: 50px;
-    border: var(--border-size) solid var(--main-color);
+    border: var(--border-size) solid var(--border-color);
 }

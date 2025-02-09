@@ -1,15 +1,22 @@
 import { use } from "react";
+import classNames from "classnames";
 
 import { useProgressBar } from "./useProgressBar";
 import { ThemeContext } from "../contexts/theme/themeContext";
+
 import style from "./progressBar.module.scss";
 
 export const ProgressBar = () => {
-    const { themeVariables } = use(ThemeContext);
+    const { theme } = use(ThemeContext);
     const { progress } = useProgressBar();
 
     return (
-        <div className={style.container} style={{ backgroundColor: themeVariables["--progressbar-bg-color"], transition: `background-color ${themeVariables.transition}` }}>
+        <div
+            className={classNames(style.container, {
+                [style.mainTheme]: theme === "main",
+                [style.secondaryTheme]: theme === "secondary",
+            })}
+        >
             <div className={style.progress} style={{ width: `${progress}%` }}></div>
         </div>
     );

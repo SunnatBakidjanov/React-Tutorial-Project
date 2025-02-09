@@ -3,34 +3,45 @@
 
 :root {
     // mainColors
-    --main-color: #F3F4F6;
+    --white: #F3F4F6;
     --black: #000;
-    --accent-color: #FFD25D;
+    --main-color: #FFD25D;
     --secondary-color: #d35400; 
     --grey: #838383;
 
     // colors
 
+    // border
+    --border-color: var(--white);
+
+    // lines
+    --lines-main-color: var(--main-color);
+    --lines-secondary-color: var(--secondary-color);
+
     // progressBar
-    --progressbar-bg-color: var(--accent-color);
-    --progressbar-progress-scroll-bg-color: var(--main-color);
+    --progressbar-bg-main-color: var(--main-color);
+    --progressbar-bg-secondary-color: var(--secondary-color);
+    --progressbar-progress-scroll-bg-color: var(--white);
 
     // same
-    --title-color: var(--main-color);
+    --title-color: var(--white);
     --text-color: var(--black);
 
     // button
-    --button-color: var(--main-color);
-    --button-hover-color: var(--black);
-    --button-hover-bg-color: var(--accent-color);
+    --button-main-color: var(--black);
+    --button-main-bg-color: var(--main-color);
+    --button-secondary-color: var(--white);
+    --button-secondary-bg-color: var(--secondary-color);
+
 
     // scroll
 
     // size
+    --change-theme-transition: 0.2s ease-out;
     --page-container-width: 1400px;
     --progressbar-height: 15px;
     --header-heigth: 70px;
-    --bg-blur: blur(20px);
+    --bg-blur: blur(30px);
     --welcome-page-indents: 60px;
     --border-size: 2px;
 }

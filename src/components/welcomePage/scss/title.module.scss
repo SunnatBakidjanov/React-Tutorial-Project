@@ -5,7 +5,7 @@
     font-weight: 400;
     font-size: $font-size;
     color: var(--title-color);
-    border-bottom: 3px solid var(--accent-color);
+    transition: border-bottom var(--change-theme-transition);
 }
 
 .title {
@@ -21,4 +21,12 @@
    text-align: center;
 
     @include titles(2.5em, 20px)
+}
+
+.mainTheme {
+    border-bottom: 3px solid var(--lines-main-color);
+}
+
+.secondaryTheme {
+    border-bottom: 3px solid var(--lines-secondary-color);
 }

@@ -4,11 +4,19 @@
     top: 0;
     width: 100%;
     height: var(--progressbar-height);
-    background-color: var(--progressbar-bg-color);
+    transition: background-color var(--change-theme-transition);
 }
 
 .progress {
     height: inherit;
     background-color: var(--progressbar-progress-scroll-bg-color);
     will-change: width;
+}
+
+.mainTheme {
+    background-color: var(--progressbar-bg-main-color);
+}
+
+.secondaryTheme {
+    background-color: var(--progressbar-bg-secondary-color);
 }

@@ -8,7 +8,16 @@
     justify-content: space-between;
     padding: 0 15px;
     height: var(--header-heigth);
-    border-bottom: 3px solid var(--main-color);
+    border-bottom: 3px solid;
+    transition: border-bottom-color var(--change-theme-transition)
+}
+
+.mainTheme {
+    border-bottom-color: var(--lines-main-color);
+}
+
+.secondaryTheme {
+    border-bottom-color: var(--lines-secondary-color);
 }
 
 @media (width <= 1024px) {

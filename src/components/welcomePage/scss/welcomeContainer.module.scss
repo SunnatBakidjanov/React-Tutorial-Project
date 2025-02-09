@@ -15,5 +15,5 @@
 .cusinesFilter {
     @include container(20px, 25%, 200px, 350px);
 
-    border: var(--border-size) solid var(--main-color);
+    border: var(--border-size) solid var(--border-color);
 }

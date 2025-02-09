@@ -3,8 +3,16 @@
     z-index: -1;
     width: 0;
     height: 100%;
-    background-color: var(--button-hover-bg-color);
+    transition: width 0.4s ease-out, background-color var(--change-theme-transition);
     content: '';
+}
+
+.afterMainTheme {
+    background-color: var(--button-main-bg-color);
+}
+
+.afterSecondaryTheme {
+    background-color: var(--button-secondary-bg-color);
 }
 
 .button {
@@ -18,11 +26,23 @@
     min-height: 60px;
     max-height: 70px;
     font-size: 2em;
-    transition: color 0.3s ease-out;
-    color: var(--button-color);
-    border: var(--border-size) solid var(--main-color);
+    transition: width 0.3s ease-out, color var(--change-theme-transition);
+    border: var(--border-size) solid var(--border-color);
 
     &:hover .after {
         width: 100%;
     }
 }
+
+.buttonMainTheme {
+    color: var(--button-secondary-color);
+
+    &:hover {
+        color: var(--button-main-color);
+    }
+}
+
+.buttonSecondaryTheme {
+    color: var(--button-secondary-color);
+}
+

@@ -1,8 +1,27 @@
 .button {
     padding: 10px 20px;
     font-size: 1.2em;
-    color: var(--black);
-    background-color: var(--accent-color);
     border-radius: 10px;
     cursor: pointer;
+    transition: background-color var(--change-theme-transition), color var(--change-theme-transition);
+}
+
+.mainTheme {
+    color: var(--button-main-color);
+    background-color: var(--button-main-bg-color);
+
+    &:hover {
+        color: var(--button-secondary-color);
+        background-color: var(--button-secondary-bg-color);
+    }
+}
+
+.secondaryTheme {
+    color: var(--button-secondary-color);
+    background-color: var(--button-secondary-bg-color);
+
+    &:hover {
+        color: var(--button-main-color);
+        background-color: var(--button-main-bg-color);
+    }
 }
