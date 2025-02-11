@@ -1,6 +1,3 @@
-// font-family: "Roboto", serif;
-// font-family: "Lobster", serif;
-
 :root {
     // mainColors
     --white: #F3F4F6;
@@ -53,17 +50,7 @@
     src: url('/fonts/Lobster/Lobster-Regular.ttf') format('opentype');
 }
 
-@font-face {
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 400;
-    src: url('/fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf') format('opentype');
-}
-
 body {
     font-family: Lobster, serif;
     font-weight: 400;
 }
-
-// #F3F4F6 светлый
-// #FFD25D желтый

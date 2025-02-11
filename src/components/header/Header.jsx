@@ -2,15 +2,17 @@ import classNames from "classnames";
 import { use } from "react";
 
 import { ThemeContext } from "../contexts/theme/index";
+import { AuthContext } from "../contexts/authorization";
+
 import { Logo } from "./UI/logo/Logo";
-import { ToggleThemeButton } from "./UI/toggleThemeButton/ToggleThemeButton";
 import { UserName } from "./UI/user/UserName";
+import { Button } from "../button/Button";
 
 import styles from "./header.module.scss";
-import { AuthButton } from "./UI/authButton/authButton";
 
 export const Header = () => {
-    const { theme } = use(ThemeContext);
+    const { theme, toggleTheme } = use(ThemeContext);
+    const { auth, toggleAuth } = use(AuthContext);
 
     return (
         <header className={styles.header}>
@@ -23,9 +25,9 @@ export const Header = () => {
                 <Logo />
 
                 <div className={styles.authContainer}>
-                    <ToggleThemeButton />
+                    <Button onClick={toggleTheme} text={"Изменить тему"} />
                     <UserName />
-                    <AuthButton />
+                    <Button onClick={toggleAuth} text={!auth.isAuthed ? "Войти" : "Выйти"} />
                 </div>
             </div>
         </header>
