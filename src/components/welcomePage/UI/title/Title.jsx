@@ -1,15 +1,16 @@
 import { use } from "react";
 import classNames from "classnames";
-import styles from "../../scss/title.module.scss";
 
 import { ThemeContext } from "../../../contexts/theme/index";
 
-export const Title = ({ text, customStyle }) => {
+import styles from "./title.module.scss";
+
+export const Title = ({ text, style }) => {
     const { theme } = use(ThemeContext);
 
     return (
         <h2
-            className={classNames(customStyle, {
+            className={classNames(styles[style], {
                 [styles.mainTheme]: theme === "main",
                 [styles.secondaryTheme]: theme === "secondary",
             })}

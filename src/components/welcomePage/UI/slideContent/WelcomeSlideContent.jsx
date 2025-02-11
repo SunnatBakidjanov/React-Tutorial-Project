@@ -4,21 +4,14 @@ import classNames from "classnames";
 import { ThemeContext } from "../../../contexts/theme/index";
 
 import styles from "./slideContent.module.scss";
-import titleStyles from "../../scss/title.module.scss";
+import { Title } from "../title/Title";
 
 export const WelcomeSlideContent = ({ restaurant, opacity, transform }) => {
     const { theme } = use(ThemeContext);
 
     return (
         <div className={styles.content} style={{ opacity: opacity, transform: `translateX(${transform}px)`, transition: "opacity 1s ease-out, transform 1s ease-out" }}>
-            <p
-                className={classNames(titleStyles.sliderTitle, {
-                    [titleStyles.mainTheme]: theme === "main",
-                    [titleStyles.secondaryTheme]: theme === "secondary",
-                })}
-            >
-                {restaurant.name}
-            </p>
+            <Title text={restaurant.name} style='slider' />
             <p className={styles.description}>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias facere quas hic consectetur! Quam eveniet voluptates cumque porro blanditiis et, sit ipsa sed dolorum, magnam voluptate ab? Officia, explicabo incidunt?
             </p>

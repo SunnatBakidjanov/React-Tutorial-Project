@@ -1,0 +1,8 @@
+.container {
+    margin-top: 30px;
+    width: calc(100% - var(--welcome-page-indents));
+    height: 25%;
+    min-height: 200px;
+    max-height: 300px;
+    border: var(--border-size) solid var(--border-color);
+}

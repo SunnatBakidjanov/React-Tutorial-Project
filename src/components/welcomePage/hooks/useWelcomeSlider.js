@@ -1,22 +1,28 @@
-import { useReducer, useEffect } from "react";
+import { useReducer, useEffect, useRef } from "react";
 
-const START_POSITION = 0;
+const startPosition = 0;
 
-const INITIAL_VALUE = restaurants => {
-    const VALIDATE_POSITION = Math.max(0, Math.min(restaurants.length - 1, START_POSITION));
-
-    return {
-        opacity: 1,
-        transform: 0,
-        offset: VALIDATE_POSITION,
-        activeId: restaurants[VALIDATE_POSITION]?.id,
-    };
+const TRANSFORM_VALUE = {
+    START_POSITION: 0,
+    RENDER_POSITION: 45,
+    END_POSITION: 50,
 };
 
 const TIMERS = {
     HIDE_SLIDE: 5000,
     TRANSITION_DURATION: 1000,
     SHOW_SLIDE: 100,
+};
+
+const initialValue = restaurants => {
+    const validatePosition = Math.max(0, Math.min(restaurants.length - 1, startPosition));
+
+    return {
+        opacity: 1,
+        transform: TRANSFORM_VALUE.START_POSITION,
+        offset: validatePosition,
+        activeId: restaurants[validatePosition]?.id,
+    };
 };
 
 const ACTIONS = {
@@ -31,7 +37,7 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 opacity: 0,
-                transform: 45,
+                transform: TRANSFORM_VALUE.RENDER_POSITION,
             };
         }
 
@@ -41,7 +47,7 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 opacity: 0,
-                transform: 50,
+                transform: TRANSFORM_VALUE.END_POSITION,
                 offset: nextOffset,
                 activeId: action.restaurants[nextOffset]?.id,
             };
@@ -51,7 +57,7 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 opacity: 1,
-                transform: 0,
+                transform: TRANSFORM_VALUE.START_POSITION,
             };
         }
 
@@ -61,30 +67,44 @@ const reducer = (state, action) => {
 };
 
 export const useWelcomeSlider = restaurants => {
-    const [state, dispatch] = useReducer(reducer, INITIAL_VALUE(restaurants));
+    const [state, dispatch] = useReducer(reducer, initialValue(restaurants));
+
+    const timeoutsRef = useRef([]);
+
+    const setSafeTimeout = (callback, delay) => {
+        const id = setTimeout(callback, delay);
+        timeoutsRef.current.push(id);
+    };
+
+    useEffect(() => {
+        return () => {
+            timeoutsRef.current.forEach(id => clearTimeout(id));
+            timeoutsRef.current = [];
+        };
+    }, []);
 
     useEffect(() => {
         switch (state.transform) {
-            case 0:
-                setTimeout(() => {
+            case TRANSFORM_VALUE.START_POSITION:
+                setSafeTimeout(() => {
                     dispatch({ type: ACTIONS.HIDE_SLIDE });
                 }, TIMERS.HIDE_SLIDE);
                 break;
 
-            case 45:
-                setTimeout(() => {
+            case TRANSFORM_VALUE.RENDER_POSITION:
+                setSafeTimeout(() => {
                     dispatch({ type: ACTIONS.CHANGE_SLIDE, restaurants });
                 }, TIMERS.TRANSITION_DURATION);
                 break;
 
-            case 50:
-                setTimeout(() => {
+            case TRANSFORM_VALUE.END_POSITION:
+                setSafeTimeout(() => {
                     dispatch({ type: ACTIONS.SHOW_SLIDE });
                 }, TIMERS.SHOW_SLIDE);
                 break;
 
             default:
-                return dispatch({ type: ACTIONS.SHOW_SLIDE });
+                dispatch({ type: ACTIONS.SHOW_SLIDE });
         }
     }, [state.transform, restaurants]);
 

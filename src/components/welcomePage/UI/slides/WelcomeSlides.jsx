@@ -1,7 +1,6 @@
 import { WelcomeSlideImg } from "../slideImg/WelcomeSlideImg.jsx";
 
 import styles from "./welcomeSlides.module.scss";
-import stylesContainer from "../../scss/welcomeContainer.module.scss";
 
 import { useWelcomeSlider } from "../../hooks/useWelcomeSlider.js";
 import { WelcomeSlideContent } from "../slideContent/WelcomeSlideContent.jsx";
@@ -15,7 +14,7 @@ export const WelcomeSlides = ({ restaurants }) => {
     if (!restaurant) return null;
 
     return (
-        <div className={stylesContainer.sliderContainer}>
+        <div className={styles.container}>
             <div key={restaurant.id} className={styles.slides}>
                 <WelcomeSlideImg restaurant={restaurant} opacity={opacity} transform={transform} />
 

@@ -1,5 +1,5 @@
-@mixin titles($font-size, $margin-top) {
-    margin-top: $margin-top;
+@mixin titles($font-size, $padding-top) {
+    padding-top: $padding-top;
     padding-bottom: 5px;
     font-style: italic;
     font-weight: 400;
@@ -8,15 +8,15 @@
     transition: border-bottom var(--change-theme-transition);
 }
 
-.title {
+.restaurant {
     @include titles(3.5em, 0)
 }
 
-.cusinesTitle {
+.cusines {
     @include titles(3em, 30px)
 }
 
-.sliderTitle {
+.slider {
    width: 90%;
    text-align: center;
 

@@ -7,7 +7,6 @@ import { FormButton } from "./UI/formButton/FormButton.jsx";
 import { restaurants } from "../../../mock/mock";
 
 import styles from "./welcomePage.module.scss";
-import titleStyles from "./scss/title.module.scss";
 
 export const WelcomePage = () => {
     const updateRestaurants = [...restaurants];
@@ -17,9 +16,9 @@ export const WelcomePage = () => {
             <div className={styles.container}>
                 <Header />
                 <div className={styles.welcomeContent}>
-                    <Title text={"Рестораны"} customStyle={titleStyles.title} />
+                    <Title text='Рестораны' style='restaurant' />
                     <WelcomeSlides restaurants={updateRestaurants} />
-                    <Title text={"Кухни"} customStyle={titleStyles.cusinesTitle} />
+                    <Title text={"Кухни"} style='cusines' />
                     <RestaurantFilter />
                     <FormButton />
                 </div>

@@ -1,5 +1,5 @@
-import stylesContainer from "../../scss/welcomeContainer.module.scss";
+import styles from "./restaurantFilter.module.scss";
 
 export const RestaurantFilter = () => {
-    return <div className={stylesContainer.cusinesFilter}></div>;
+    return <div className={styles.container}></div>;
 };

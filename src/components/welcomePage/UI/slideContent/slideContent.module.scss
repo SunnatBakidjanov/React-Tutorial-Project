@@ -21,7 +21,6 @@
 }
 
 .line {
-    margin-bottom: 20px;
     width: 90%;
     height: 3px;
     transition: background-color var(--change-theme-transition);
@@ -36,6 +35,7 @@
 }
 
 .raiting {
+    margin-top: 20px;
     width: 90%;
     height: 10%;
     min-height: 50px;
