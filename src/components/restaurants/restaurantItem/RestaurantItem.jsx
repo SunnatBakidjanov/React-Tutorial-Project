@@ -8,7 +8,6 @@ import { AuthContext } from "../../contexts/authorization";
 
 export const RestaurantItem = ({ name, menu, reviews }) => {
     const { auth } = use(AuthContext);
-    console.log(auth);
 
     return (
         <>
