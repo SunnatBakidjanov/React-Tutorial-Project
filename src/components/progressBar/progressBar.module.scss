@@ -1,14 +1,22 @@
 .container {
     position: fixed;
+    z-index: var(--z-index-progress-bar);
     top: 0;
     width: 100%;
-    height: 20px;
-    background-color: white;
+    height: var(--progressbar-height);
+    transition: background-color var(--change-theme-transition);
 }
 
 .progress {
-    background-color: red;
-    width: var(--progress-bar-width);
     height: inherit;
+    background-color: var(--progressbar-progress-scroll-bg-color);
     will-change: width;
+}
+
+.mainTheme {
+    background-color: var(--progressbar-bg-main-color);
+}
+
+.secondaryTheme {
+    background-color: var(--progressbar-bg-secondary-color);
 }

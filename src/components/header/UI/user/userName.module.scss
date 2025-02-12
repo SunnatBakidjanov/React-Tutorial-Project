@@ -1,0 +1,8 @@
+.user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4em;
+    color: var(--button-secondary-color);
+    transition: width 0.5s ease-out;
+}

@@ -1,0 +1,22 @@
+.container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 70px;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 850px;
+    height: 400px;
+    overflow: hidden;
+}
+
+.slider {
+    display: flex;
+    justify-content: center;
+    column-gap: 50px;
+}

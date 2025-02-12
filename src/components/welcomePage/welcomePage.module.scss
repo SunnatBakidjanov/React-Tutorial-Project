@@ -1,0 +1,24 @@
+.welcomePage {
+    background-image: url('/img/png/background.png');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: var(--page-container-width);
+}
+
+.welcomeContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+    width: 100%;
+    height: calc(100vh - var(--header-heigth));
+    min-height: calc(1000px - var(--header-heigth));
+    -webkit-backdrop-filter: var(--bg-blur);
+    backdrop-filter: var(--bg-blur);
+}

@@ -1,8 +1,14 @@
+import { use } from "react";
+
 import { Menu } from "../menu/Menu";
 import { Reviews } from "../reviews/Reviews";
 import { ReviewForm } from "../review-form/ReviewForm";
 
+import { AuthContext } from "../../contexts/authorization";
+
 export const RestaurantItem = ({ name, menu, reviews }) => {
+    const { auth } = use(AuthContext);
+
     return (
         <>
             <h2 className='restaurants-name'>{name}</h2>
@@ -19,7 +25,7 @@ export const RestaurantItem = ({ name, menu, reviews }) => {
                 <Reviews reviews={reviews} />
             </div>
 
-            <ReviewForm />
+            {auth.isAuthed ? <ReviewForm /> : null}
         </>
     );
 };

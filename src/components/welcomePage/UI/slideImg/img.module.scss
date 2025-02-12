@@ -1,0 +1,9 @@
+.img {
+    width: 50%;
+    height: inherit;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 2%;
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}

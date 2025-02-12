@@ -1,4 +1,4 @@
-export const validateRestaurant = restaurant => {
+export const validateRestaurants = restaurant => {
     const updatedRestaurant = { ...restaurant };
 
     if (updatedRestaurant?.name?.trim() === "" || updatedRestaurant.name === undefined) {
