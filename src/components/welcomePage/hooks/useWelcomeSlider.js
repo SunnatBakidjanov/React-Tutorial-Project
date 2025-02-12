@@ -1,6 +1,6 @@
 import { useReducer, useEffect, useRef } from "react";
 
-const startPosition = 0;
+const START_POSITION = 0;
 
 const TRANSFORM_VALUE = {
     START_POSITION: 0,
@@ -15,7 +15,7 @@ const TIMERS = {
 };
 
 const initialValue = restaurants => {
-    const validatePosition = Math.max(0, Math.min(restaurants.length - 1, startPosition));
+    const validatePosition = Math.max(0, Math.min(restaurants.length - 1, START_POSITION));
 
     return {
         opacity: 1,
@@ -68,22 +68,14 @@ const reducer = (state, action) => {
 
 export const useWelcomeSlider = restaurants => {
     const [state, dispatch] = useReducer(reducer, initialValue(restaurants));
-
     const timeoutsRef = useRef([]);
 
-    const setSafeTimeout = (callback, delay) => {
-        const id = setTimeout(callback, delay);
-        timeoutsRef.current.push(id);
-    };
-
     useEffect(() => {
-        return () => {
-            timeoutsRef.current.forEach(id => clearTimeout(id));
-            timeoutsRef.current = [];
+        const setSafeTimeout = (callback, delay) => {
+            const id = setTimeout(callback, delay);
+            timeoutsRef.current.push(id);
         };
-    }, []);
 
-    useEffect(() => {
         switch (state.transform) {
             case TRANSFORM_VALUE.START_POSITION:
                 setSafeTimeout(() => {
@@ -106,6 +98,11 @@ export const useWelcomeSlider = restaurants => {
             default:
                 dispatch({ type: ACTIONS.SHOW_SLIDE });
         }
+
+        return () => {
+            timeoutsRef.current.forEach(id => clearTimeout(id));
+            timeoutsRef.current = [];
+        };
     }, [state.transform, restaurants]);
 
     return { state };

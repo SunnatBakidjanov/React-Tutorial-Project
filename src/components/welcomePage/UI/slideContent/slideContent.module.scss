@@ -5,6 +5,7 @@
     width: 50%;
     height: inherit;
     overflow: hidden;
+    transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
 .description {

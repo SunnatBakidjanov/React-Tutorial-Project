@@ -43,13 +43,9 @@
     --border-size: 2px;
 
     // z-index
-    --z-index-background: 0;
-    --z-index-content: 1;
+    --z-index-background: 1;
+    --z-index-content: 2;
     --z-index-progress-bar: 50;
-    --z-index-modal: 100;
-
-    // var-index
-    --progress-bar: var(--z-index-progress-bar);
 }
 
 @font-face {

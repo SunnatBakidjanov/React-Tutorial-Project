@@ -1,6 +1,6 @@
 .container {
     position: fixed;
-    z-index: var(--progress-bar);
+    z-index: var(--z-index-progress-bar);
     top: 0;
     width: 100%;
     height: var(--progressbar-height);

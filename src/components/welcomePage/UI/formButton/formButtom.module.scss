@@ -1,6 +1,7 @@
 .after {
     position: absolute;
-    z-index: -1;
+    pointer-events: none;
+    z-index: var(--z-index-background);
     width: 0;
     height: 100%;
     transition: width 0.4s ease-out, background-color var(--change-theme-transition);
@@ -15,6 +16,21 @@
     background-color: var(--button-secondary-bg-color);
 }
 
+.text {
+    position: relative;
+    z-index: var(--z-index-content);
+    pointer-events: none;
+    transition: color var(--change-theme-transition);
+}
+
+.textMainTheme {
+    color: var(--button-secondary-color);
+}
+
+.textSecondaryTheme {
+    color: var(--button-secondary-color);
+}
+
 .button {
     position: relative;
     display: flex;
@@ -26,23 +42,14 @@
     min-height: 60px;
     max-height: 70px;
     font-size: 2em;
-    transition: width 0.3s ease-out, color var(--change-theme-transition);
     border: var(--border-size) solid var(--border-color);
 
     &:hover .after {
         width: 100%;
     }
-}
 
-.buttonMainTheme {
-    color: var(--button-secondary-color);
-
-    &:hover {
+    &:hover .textMainTheme {
         color: var(--button-main-color);
     }
-}
-
-.buttonSecondaryTheme {
-    color: var(--button-secondary-color);
 }
 

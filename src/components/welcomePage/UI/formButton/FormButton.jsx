@@ -3,24 +3,25 @@ import classNames from "classnames";
 
 import { ThemeContext } from "../../../contexts/theme/index";
 
-import style from "./formButtom.module.scss";
+import styles from "./formButtom.module.scss";
 
 export const FormButton = () => {
     const { theme } = use(ThemeContext);
 
     return (
-        <button
-            type='button'
-            className={classNames(style.button, {
-                [style.buttonMainTheme]: theme === "main",
-                [style.buttonSecondaryTheme]: theme === "secondary",
-            })}
-        >
-            Показать рестораны{" "}
+        <button type='button' className={styles.button}>
             <span
-                className={classNames(style.after, {
-                    [style.afterMainTheme]: theme === "main",
-                    [style.afterSecondaryTheme]: theme === "secondary",
+                className={classNames(styles.text, {
+                    [styles.textMainTheme]: theme === "main",
+                    [styles.textSecondaryTheme]: theme === "secondary",
+                })}
+            >
+                Показать рестораны
+            </span>
+            <span
+                className={classNames(styles.after, {
+                    [styles.afterMainTheme]: theme === "main",
+                    [styles.afterSecondaryTheme]: theme === "secondary",
                 })}
             ></span>
         </button>

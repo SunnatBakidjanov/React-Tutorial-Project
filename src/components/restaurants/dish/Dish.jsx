@@ -1,7 +1,13 @@
+import { use } from "react";
+
+import { AuthContext } from "../../contexts/authorization";
+
 import { Counter } from "../counter/Counter";
 import { useCount } from "../hooks/useCount";
 
 export const Dish = ({ dish, price, ingredients }) => {
+    const { auth } = use(AuthContext);
+
     const countState = useCount();
 
     return (
@@ -10,7 +16,7 @@ export const Dish = ({ dish, price, ingredients }) => {
             <p className='price'>Price: {price}</p>
             <p className='ingredients'>Ingredients: {ingredients}</p>
 
-            <Counter {...countState} price={price} />
+            {auth.isAuthed ? <Counter {...countState} price={price} /> : null}
         </>
     );
 };

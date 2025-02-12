@@ -10,7 +10,7 @@ export const WelcomeSlideContent = ({ restaurant, opacity, transform }) => {
     const { theme } = use(ThemeContext);
 
     return (
-        <div className={styles.content} style={{ opacity: opacity, transform: `translateX(${transform}px)`, transition: "opacity 1s ease-out, transform 1s ease-out" }}>
+        <div className={styles.content} style={{ opacity: opacity, transform: `translateX(${transform}px)` }}>
             <Title text={restaurant.name} style='slider' />
             <p className={styles.description}>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias facere quas hic consectetur! Quam eveniet voluptates cumque porro blanditiis et, sit ipsa sed dolorum, magnam voluptate ab? Officia, explicabo incidunt?
