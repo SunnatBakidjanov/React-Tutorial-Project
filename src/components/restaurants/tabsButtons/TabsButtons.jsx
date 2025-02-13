@@ -1,14 +1,7 @@
-export const TabsButtons = ({ restaurants, handleSetIdOnClick }) => {
-    return restaurants.map(restaurant => {
-        const validateRestaurant = {
-            ...restaurant,
-            name: restaurant.name?.trim() || "Ресторан",
-        };
-
-        return (
-            <button key={restaurant.id} className='restaurant-tab' style={{ padding: "10px 50px", cursor: "pointer" }} onClick={() => handleSetIdOnClick(restaurant.id)}>
-                {validateRestaurant.name}
-            </button>
-        );
-    });
+export const TabsButtons = ({ restaurants, setActiveRestaurant }) => {
+    return restaurants.map(restaurant => (
+        <button key={restaurant.id} onClick={() => setActiveRestaurant(restaurant.id)}>
+            {restaurant.name}
+        </button>
+    ));
 };

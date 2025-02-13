@@ -1,0 +1,44 @@
+.header {
+    margin-top: var(--progressbar-height);
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    height: var(--header-heigth);
+    border-bottom: 3px solid;
+    transition: border-bottom-color var(--change-theme-transition)
+}
+
+.mainTheme {
+    border-bottom-color: var(--lines-main-color);
+}
+
+.secondaryTheme {
+    border-bottom-color: var(--lines-secondary-color);
+}
+
+.authContainer {
+    display: flex;
+    column-gap: 10px;
+}
+
+@media (width <= 1024px) {
+    .wrapper {
+        padding: 0 25px;
+    }
+}
+
+@media (width <= 768px) {
+    .wrapper {
+        padding: 0 20px;
+    }
+}
+
+@media (width <= 425px) {
+    .wrapper {
+        padding: 0 10px;
+    }
+}

@@ -1,4 +1,4 @@
-export const Counter = ({ count, onIncrement, onDecrement }) => {
+export const Counter = ({ count, price, onIncrement, onDecrement }) => {
     return (
         <>
             <button type='button' style={{ width: "20px", height: "20px" }} onClick={onDecrement}>
@@ -8,6 +8,8 @@ export const Counter = ({ count, onIncrement, onDecrement }) => {
             <button type='button' style={{ width: "20px", height: "20px" }} onClick={onIncrement}>
                 +
             </button>
+
+            <p className='total-cost'>{price * count || 0}</p>
         </>
     );
 };

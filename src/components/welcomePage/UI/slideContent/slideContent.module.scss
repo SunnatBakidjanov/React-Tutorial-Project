@@ -1,0 +1,44 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    height: inherit;
+    overflow: hidden;
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.description {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    width: 90%;
+    height: 70%;
+    font-size: 1.5em;
+    color: var(--title-color);
+    text-align: center;
+    overflow: hidden;
+}
+
+.line {
+    width: 90%;
+    height: 3px;
+    transition: background-color var(--change-theme-transition);
+}
+
+.lineMainTheme {
+    background-color: var(--lines-main-color);
+}
+
+.lineSecondaryTheme {
+    background-color: var(--lines-secondary-color);
+}
+
+.raiting {
+    margin-top: 20px;
+    width: 90%;
+    height: 10%;
+    min-height: 50px;
+    border: var(--border-size) solid var(--border-color);
+}

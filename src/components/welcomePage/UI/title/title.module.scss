@@ -1,0 +1,32 @@
+@mixin titles($font-size, $padding-top) {
+    padding-top: $padding-top;
+    padding-bottom: 5px;
+    font-style: italic;
+    font-weight: 400;
+    font-size: $font-size;
+    color: var(--title-color);
+    transition: border-bottom var(--change-theme-transition);
+}
+
+.restaurant {
+    @include titles(3.5em, 0)
+}
+
+.cusines {
+    @include titles(3em, 30px)
+}
+
+.slider {
+   width: 90%;
+   text-align: center;
+
+    @include titles(2.5em, 20px)
+}
+
+.mainTheme {
+    border-bottom: 3px solid var(--lines-main-color);
+}
+
+.secondaryTheme {
+    border-bottom: 3px solid var(--lines-secondary-color);
+}

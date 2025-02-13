@@ -1,9 +1,15 @@
 import { TabsButtons } from "../tabsButtons/TabsButtons";
 
-export const RestaurantTabs = ({ restaurants, handleSetIdOnClick }) => {
+import styles from "./restaurantTabs.module.scss";
+
+export const RestaurantTabs = ({ restaurants, setActiveRestaurant }) => {
     return (
-        <div className='restaurant-tabs-box' style={{ display: "flex", alignItems: "center", justifyContent: "center", columnGap: "100px" }}>
-            <TabsButtons restaurants={restaurants} handleSetIdOnClick={handleSetIdOnClick} />
+        <div className={styles.container}>
+            <div className={styles.box}>
+                <div className={styles.slider}>
+                    <TabsButtons restaurants={restaurants} setActiveRestaurant={setActiveRestaurant} />
+                </div>
+            </div>
         </div>
     );
 };
