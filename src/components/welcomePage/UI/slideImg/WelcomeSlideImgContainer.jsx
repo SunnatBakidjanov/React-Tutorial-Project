@@ -6,5 +6,7 @@ import { WelcomeSlideImg } from "./WelcomeSlideImg";
 export const WelcomeSliceImgContainer = ({ id, opacity, transform }) => {
     const restaurantById = useSelector(state => selectRestaurantById(state, id));
 
+    if (!restaurantById) return;
+
     return <WelcomeSlideImg id={restaurantById.id} opacity={opacity} transform={transform} />;
 };
