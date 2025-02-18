@@ -1,12 +1,12 @@
 import { useSelector } from "react-redux";
 import { selectRestaurantsIds } from "../redux/entities/restaurants/slice";
 
-import { Restaurants } from "./Restaurants";
+import { WelcomePage } from "./WelcomePage";
 
-export const RestaurantContainer = () => {
+export const WelcomePageContainer = () => {
     const restaurantsIds = useSelector(selectRestaurantsIds);
 
     if (!restaurantsIds) return;
 
-    return <Restaurants restaurantsIds={restaurantsIds} />;
+    return <WelcomePage restaurantsIds={restaurantsIds} />;
 };

@@ -1,24 +1,20 @@
-import { WelcomeSlideImg } from "../slideImg/WelcomeSlideImg.jsx";
+import { WelcomeSliceImgContainer } from "../slideImg/WelcomeSlideImgContainer.jsx";
+import { WelcomeSlideContentContainer } from "../slideContent/WelcomeSlideContentContainer.jsx";
 
 import styles from "./welcomeSlides.module.scss";
 
 import { useWelcomeSlider } from "../../hooks/useWelcomeSlider.js";
-import { WelcomeSlideContent } from "../slideContent/WelcomeSlideContent.jsx";
 
-export const WelcomeSlides = ({ restaurants }) => {
-    const { state } = useWelcomeSlider(restaurants);
+export const WelcomeSlides = ({ restaurantsIds }) => {
+    const { state } = useWelcomeSlider(restaurantsIds);
     const { opacity, transform, activeId } = state;
-
-    const restaurant = restaurants.find(restaurant => restaurant.id === activeId);
-
-    if (!restaurant) return null;
 
     return (
         <div className={styles.container}>
-            <div key={restaurant.id} className={styles.slides}>
-                <WelcomeSlideImg restaurant={restaurant} opacity={opacity} transform={transform} />
+            <div className={styles.slides}>
+                <WelcomeSliceImgContainer id={activeId} opacity={opacity} transform={transform} />
 
-                <WelcomeSlideContent restaurant={restaurant} opacity={opacity} transform={transform} />
+                <WelcomeSlideContentContainer id={activeId} opacity={opacity} transform={transform} />
             </div>
         </div>
     );

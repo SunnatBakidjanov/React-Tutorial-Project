@@ -5,7 +5,7 @@ import { Layout } from "../layout/Layout";
 import { RestaurantContainer } from "../restaurants/RestaurantsContainer";
 import { ThemeContextProvider } from "../contexts/theme/ThemeContextProvider";
 import { AuthorizationContextProvider } from "../contexts/authorization/AuthorizationContextProvider";
-import { WelcomePage } from "../welcomePage/WelcomePage";
+import { WelcomePageContainer } from "../welcomePage/WelcomePageContainer";
 
 import "./reset.scss";
 import "./main.scss";
@@ -16,7 +16,7 @@ export const App = () => {
             <ThemeContextProvider>
                 <AuthorizationContextProvider>
                     <Layout>
-                        <WelcomePage />
+                        <WelcomePageContainer />
                         <RestaurantContainer />
                     </Layout>
                 </AuthorizationContextProvider>
