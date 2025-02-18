@@ -1,5 +1,8 @@
+import { Provider } from "react-redux";
+import { store } from "../redux/store";
+
 import { Layout } from "../layout/Layout";
-import { Restaurants } from "../restaurants/Restaurants";
+import { RestaurantContainer } from "../restaurants/RestaurantsContainer";
 import { ThemeContextProvider } from "../contexts/theme/ThemeContextProvider";
 import { AuthorizationContextProvider } from "../contexts/authorization/AuthorizationContextProvider";
 import { WelcomePage } from "../welcomePage/WelcomePage";
@@ -9,13 +12,15 @@ import "./main.scss";
 
 export const App = () => {
     return (
-        <ThemeContextProvider>
-            <AuthorizationContextProvider>
-                <Layout>
-                    <WelcomePage />
-                    <Restaurants />
-                </Layout>
-            </AuthorizationContextProvider>
-        </ThemeContextProvider>
+        <Provider store={store}>
+            <ThemeContextProvider>
+                <AuthorizationContextProvider>
+                    <Layout>
+                        <WelcomePage />
+                        <RestaurantContainer />
+                    </Layout>
+                </AuthorizationContextProvider>
+            </ThemeContextProvider>
+        </Provider>
     );
 };

@@ -1,15 +1,12 @@
-import { Dish } from "../dish/Dish";
-import { validateDish } from "./validateDish";
+import { DishContainer } from "../dish/DishContainer";
 
-export const Menu = ({ menu }) => {
+export const Menu = ({ menuId }) => {
     return (
-        <ul className='menu'>
-            {menu.map(dish => {
-                const validatedDish = validateDish(dish);
-
+        <ul>
+            {menuId.map(id => {
                 return (
-                    <li className='menu-item' key={validatedDish.id}>
-                        <Dish dish={validatedDish.name} price={validatedDish.price} ingredients={validatedDish.ingredients} />
+                    <li key={id}>
+                        <DishContainer id={id} />
                     </li>
                 );
             })}
