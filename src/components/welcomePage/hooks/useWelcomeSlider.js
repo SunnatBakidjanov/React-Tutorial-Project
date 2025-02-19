@@ -21,7 +21,7 @@ const initialValue = restaurants => {
         opacity: 1,
         transform: TRANSFORM_VALUE.START_POSITION,
         offset: validatePosition,
-        activeId: restaurants[validatePosition]?.id,
+        activeId: restaurants[validatePosition],
     };
 };
 
@@ -49,7 +49,7 @@ const reducer = (state, action) => {
                 opacity: 0,
                 transform: TRANSFORM_VALUE.END_POSITION,
                 offset: nextOffset,
-                activeId: action.restaurants[nextOffset]?.id,
+                activeId: action.restaurants[nextOffset],
             };
         }
 

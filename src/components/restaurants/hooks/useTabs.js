@@ -1,14 +1,11 @@
 import { useState } from "react";
 
-export const useTabs = restaurants => {
-    const [activeTabId, setActiveTabId] = useState(restaurants[0]?.id);
+export const useTabs = initialTabId => {
+    const [activeTabId, setActiveTabId] = useState(initialTabId);
 
-    const setActiveRestaurant = tabId => {
+    const setActiveTab = tabId => {
         if (tabId !== activeTabId) setActiveTabId(tabId);
     };
 
-    return {
-        activeTabId,
-        setActiveRestaurant,
-    };
+    return [activeTabId, setActiveTab];
 };
