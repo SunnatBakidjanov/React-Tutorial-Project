@@ -15,8 +15,8 @@ export const usersSlice = createSlice({
     name: "users",
     initialState,
     selectors: {
-        selectUserByEntities: state => state.entities,
+        selectUserById: (state, id) => state.entities[id],
     },
 });
 
-export const { selectUserByEntities } = usersSlice.selectors;
+export const { selectUserById } = usersSlice.selectors;

@@ -3,9 +3,9 @@ import { useState } from "react";
 export const useTabs = initialTabId => {
     const [activeTabId, setActiveTabId] = useState(initialTabId);
 
-    const setActiveRestaurant = tabId => {
+    const setActiveTab = tabId => {
         if (tabId !== activeTabId) setActiveTabId(tabId);
     };
 
-    return [activeTabId, setActiveRestaurant];
+    return [activeTabId, setActiveTab];
 };

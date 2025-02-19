@@ -4,9 +4,9 @@ import { selectRestaurantById } from "../../../redux/entities/restaurants/slice"
 import { WelcomeSlideImg } from "./WelcomeSlideImg";
 
 export const WelcomeSliceImgContainer = ({ id, opacity, transform }) => {
-    const restaurantById = useSelector(state => selectRestaurantById(state, id));
+    const restaurant = useSelector(state => selectRestaurantById(state, id));
 
-    if (!restaurantById) return;
+    if (!restaurant) return;
 
-    return <WelcomeSlideImg id={restaurantById.id} opacity={opacity} transform={transform} />;
+    return <WelcomeSlideImg id={restaurant.id} opacity={opacity} transform={transform} />;
 };

@@ -4,9 +4,9 @@ import { selectRestaurantsIds } from "../redux/entities/restaurants/slice";
 import { WelcomePage } from "./WelcomePage";
 
 export const WelcomePageContainer = () => {
-    const restaurantsIds = useSelector(selectRestaurantsIds);
+    const restaurants = useSelector(selectRestaurantsIds);
 
-    if (!restaurantsIds) return;
+    if (!restaurants) return;
 
-    return <WelcomePage restaurantsIds={restaurantsIds} />;
+    return <WelcomePage restaurants={restaurants} />;
 };

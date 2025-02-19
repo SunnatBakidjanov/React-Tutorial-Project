@@ -14,14 +14,14 @@ const TIMERS = {
     SHOW_SLIDE: 100,
 };
 
-const initialValue = restaurantsIds => {
-    const validatePosition = Math.max(0, Math.min(restaurantsIds.length - 1, START_POSITION));
+const initialValue = restaurants => {
+    const validatePosition = Math.max(0, Math.min(restaurants.length - 1, START_POSITION));
 
     return {
         opacity: 1,
         transform: TRANSFORM_VALUE.START_POSITION,
         offset: validatePosition,
-        activeId: restaurantsIds[validatePosition],
+        activeId: restaurants[validatePosition],
     };
 };
 
@@ -42,14 +42,14 @@ const reducer = (state, action) => {
         }
 
         case ACTIONS.CHANGE_SLIDE: {
-            const nextOffset = state.offset + 1 >= action.restaurantsIds.length ? 0 : state.offset + 1;
+            const nextOffset = state.offset + 1 >= action.restaurants.length ? 0 : state.offset + 1;
 
             return {
                 ...state,
                 opacity: 0,
                 transform: TRANSFORM_VALUE.END_POSITION,
                 offset: nextOffset,
-                activeId: action.restaurantsIds[nextOffset],
+                activeId: action.restaurants[nextOffset],
             };
         }
 
@@ -66,8 +66,8 @@ const reducer = (state, action) => {
     }
 };
 
-export const useWelcomeSlider = restaurantsIds => {
-    const [state, dispatch] = useReducer(reducer, initialValue(restaurantsIds));
+export const useWelcomeSlider = restaurants => {
+    const [state, dispatch] = useReducer(reducer, initialValue(restaurants));
     const timeoutsRef = useRef([]);
 
     useEffect(() => {
@@ -85,7 +85,7 @@ export const useWelcomeSlider = restaurantsIds => {
 
             case TRANSFORM_VALUE.RENDER_POSITION:
                 setSafeTimeout(() => {
-                    dispatch({ type: ACTIONS.CHANGE_SLIDE, restaurantsIds });
+                    dispatch({ type: ACTIONS.CHANGE_SLIDE, restaurants });
                 }, TIMERS.TRANSITION_DURATION);
                 break;
 
@@ -103,7 +103,7 @@ export const useWelcomeSlider = restaurantsIds => {
             timeoutsRef.current.forEach(id => clearTimeout(id));
             timeoutsRef.current = [];
         };
-    }, [state.transform, restaurantsIds]);
+    }, [state.transform, restaurants]);
 
     return { state };
 };

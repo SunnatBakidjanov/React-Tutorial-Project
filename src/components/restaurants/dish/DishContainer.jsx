@@ -4,9 +4,9 @@ import { selectDishById } from "../../redux/entities/dishes/slice";
 import { Dish } from "../dish/Dish";
 
 export const DishContainer = ({ id }) => {
-    const dishId = useSelector(state => selectDishById(state, id));
+    const dish = useSelector(state => selectDishById(state, id));
 
-    if (!dishId) return;
+    if (!dish) return;
 
-    return <Dish dish={dishId.name} price={dishId.price} ingredients={dishId.ingredients} />;
+    return <Dish dish={dish.name} price={dish.price} ingredients={dish.ingredients} />;
 };

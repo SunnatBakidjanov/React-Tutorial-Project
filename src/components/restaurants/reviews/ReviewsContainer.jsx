@@ -1,14 +1,14 @@
 import { useSelector } from "react-redux";
 import { selectReviewById } from "../../redux/entities/reviews/slice";
-import { selectUserByEntities } from "../../redux/entities/users/slice";
+import { selectUserById } from "../../redux/entities/users/slice";
 
 import { Reviews } from "./Reviews";
 
 export const ReviewsContainer = ({ id }) => {
-    const reviewId = useSelector(state => selectReviewById(state, id));
-    const user = useSelector(selectUserByEntities);
+    const review = useSelector(state => selectReviewById(state, id));
+    const user = useSelector(state => selectUserById(state, review.userId));
 
-    if (!reviewId && !user) return;
+    if (!review || !user) return;
 
-    return <Reviews userName={user[reviewId.userId].name} text={reviewId.text} rating={reviewId.rating} />;
+    return <Reviews userName={user.name} text={review.text} rating={review.rating} />;
 };

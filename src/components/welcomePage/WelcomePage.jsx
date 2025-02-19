@@ -6,14 +6,14 @@ import { FormButton } from "./UI/formButton/FormButton.jsx";
 
 import styles from "./welcomePage.module.scss";
 
-export const WelcomePage = ({ restaurantsIds }) => {
+export const WelcomePage = ({ restaurants }) => {
     return (
         <div className={styles.welcomePage}>
             <div className={styles.container}>
                 <Header />
                 <div className={styles.welcomeContent}>
                     <Title text='Рестораны' style='restaurant' />
-                    <WelcomeSlides restaurantsIds={restaurantsIds} />
+                    <WelcomeSlides restaurants={restaurants} />
                     <Title text={"Кухни"} style='cusines' />
                     <RestaurantFilter />
                     <FormButton />
