@@ -5,8 +5,8 @@ import styles from "./welcomeSlides.module.scss";
 
 import { useWelcomeSlider } from "../../hooks/useWelcomeSlider.js";
 
-export const WelcomeSlides = ({ restaurants }) => {
-    const { state } = useWelcomeSlider(restaurants);
+export const WelcomeSlides = ({ restaurantsIds }) => {
+    const { state } = useWelcomeSlider(restaurantsIds);
     const { opacity, transform, activeId } = state;
 
     return (
